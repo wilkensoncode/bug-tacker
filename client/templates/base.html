@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %} page {% endblock %}</title>
+</head>
+<body>
+
+	<header>
+		<h1>my website</h1>
+	</header>
+
+	<main>
+		<section>
+			{% block section %} main contents 'main > section' {% endblock %}
+		</section>
+	</main>
+
+	<footer>
+		&copy; all right reserved 🔥
+	</footer>
+
+</body>
+</html>
