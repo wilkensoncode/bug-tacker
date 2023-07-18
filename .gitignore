@@ -1,5 +1,4 @@
-__init__.py
-
 __pycache__
 
-config
+config/secret.env
+config/zo.env
