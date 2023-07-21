@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from website import config
 
 from .server.views import view
-from .server.auth import auth
+from .server.auths import auth
 
 import os
 
@@ -20,7 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 def create_app():
-    app = Flask(__name__, template_folder='client/templates')
+    app = Flask(__name__, template_folder='client/templates', static_folder='client/static')
     app.config['SECRET_KEY'] = SECRET_KEY
     app.register_blueprint(view, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
