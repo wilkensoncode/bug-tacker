@@ -11,6 +11,7 @@
     --white: #fff;
     --about-color: #47b2e4;
     --sub-headers: #37517e;
+    --blue: #61F2F5 ;
     --action-color: #47b2e4; /* get started btn*/
 }
 
@@ -25,4 +26,32 @@
 }
 .sign {
     color:var(--green)
+}
+
+.col input {
+    border-top: none;
+    border-left:None;
+    border-right:none;
+    border-bottom: 1px solid var(--blue);
+    color: var(--blue) !important;
+    background: var(--dark);
+}
+
+.col input:focus {
+  background-color: var(--dark);
+}
+.col input {
+         display: block;
+     }
+.col input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--white);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--white);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--white);
 }
