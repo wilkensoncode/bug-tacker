@@ -16,9 +16,13 @@
 
 .btn-inherent {
     border: 1px solid var(--green);
-    color: var(--white)
+    color: var(--white);
+    border-radius: 50px;
 }
 .btn-inherent:hover {
     border: 1px solid var(--green);
     background: var(--green)
+}
+.sign {
+    color:var(--green)
 }
