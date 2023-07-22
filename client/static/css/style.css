@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #262626;
+    --green: #00FFAB;
+    --border-btm: 1px #fff solid;
+}
+
+body {
+    background: var(--dark);
+    color:white;
+    position: relative;
+}
+/* header styling*/
+
+.header-btn button {
+    color: var(--green);
+    background:var(--green);
+}
+
+.header-nav-link a{
+    color: var(--green);
+}
+
+.header-nav-link a:hover{
+    border-bottom: var(--border-btm);
+    color: var(--green);
+}
+.header-nav-link a:hover{
+    color: green;
+}
+
+
+
+
+/*  keep footer at the bottom */
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;     /* Footer height */
+}
+
+#footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0rem;          /* Footer height */
+}
