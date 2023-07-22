@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{% block title %} page {% endblock %}</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+ 	<meta content="" name="description">
+	<meta content="" name="keywords">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300stylesheet,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+	<!-- Template Main CSS File -->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/register.css')}}">
+
+	<title>{% block title %} page {% endblock %}</title>
+
 </head>
 <body>
 	<header class="text-success">
@@ -15,7 +27,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
-					<ul class="navbar-nav header-nav-link float-end">
+					<ul class="navbar-nav header-nav-link">
 						<li class="nav-item">
 							<a class="nav-link display-1" aria-current="page"  href="#">Issues</a>
 						</li>
@@ -31,6 +43,11 @@
 						<li class="nav-item">
 							<a class="nav-link display-1" href="#">Logout</a>
 						</li>
+						<li class="">
+							<div class="d-flex justify-content-center justify-content-lg-start">
+								<button href="#about" class="btn btn-get-started" type="submit">Get Started</button>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -43,10 +60,26 @@
 				{% block section %} section {% endblock %}
 			</section>
 		</main>
-		<footer id="footer">&copy; all right reserved 🔥</footer>
+		<footer id="footer">
+			<div class="footer-newsletter">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-6">
+							<h4>Join Our Newsletter</h4>
+							<p>Be the first know when we launch a new product and get great discount. </p>
+							<form action="" method="post">
+								<input type="email" name="email"><input type="submit" value="Subscribe">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span class="p-5">  &copy; all right reserved 🔥 </span>
+		</footer>
 	</div>
 
+	<!-- Template Main JS File -->
 	<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-	<script src="{{url_for('static', filename='js/script.js')}}"></script>
+	<script src="{{url_for('static', filename='js/main.js')}}"></script>
 </body>
 </html>

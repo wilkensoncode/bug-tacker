@@ -8,6 +8,6 @@ def home():
     return render_template('index.html')
 
 
-@view.route('/task')
+@view.route('/register')
 def task():
-    return '<h1>Wilkenson Task</h1>'
+    return render_template('register.html')

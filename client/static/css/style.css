@@ -19,7 +19,7 @@ body {
 
 .header-btn button {
     color: var(--green);
-    background:var(--green);
+    border: 1px solid var(--green);
 }
 
 .header-nav-link a{
@@ -34,14 +34,11 @@ body {
     color: green;
 }
 
-
-
-
 /*  keep footer at the bottom */
 
 #page-container {
   position: relative;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 #content-wrap {
