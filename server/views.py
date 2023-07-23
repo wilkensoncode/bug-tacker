@@ -9,5 +9,10 @@ def home():
 
 
 @view.route('/register')
-def task():
+def register():
     return render_template('register.html')
+
+
+@view.route('/issues')
+def issues():
+    return render_template('issues.html')
