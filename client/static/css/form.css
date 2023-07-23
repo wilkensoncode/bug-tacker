@@ -14,7 +14,10 @@
     --blue: #61F2F5 ;
     --action-color: #47b2e4; /* get started btn*/
 }
+.login-container , report-container {
+    margin-top:5%;
 
+}
 .btn-inherent {
     border: 1px solid var(--green);
     color: var(--white);
@@ -28,7 +31,7 @@
     color:var(--green)
 }
 
-.col input {
+.col input, span {
     border-top: none;
     border-left:None;
     border-right:none;
@@ -40,9 +43,18 @@
 .col input:focus {
   background-color: var(--dark);
 }
-.col input {
+
+.col span {
+    background-color: var(--dark);
+    border-top: none;
+    border-left:None;
+    border-right:none;
+    border-bottom: 1px solid var(--blue);
+ }
+
+.col span, input {
          display: block;
-     }
+}
 .col input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--white);
   opacity: 1; /* Firefox */
