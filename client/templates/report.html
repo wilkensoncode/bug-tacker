@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} report {% endblock %}
+
+{% block section %}
+	<form  action="">
+		<div class="container ">
+			<div class="sign pt-5" align="center"><h3>Report 🪳</h3></div>
+			<div class="justify-content-center p-2">
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">First Name:</span>
+						<input type="text" class="form-control" id="firstname" name="firstname">
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Last Name:</span>
+						<input type="text" class="form-control" id="lastname" name="lastname">
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Email:</span>
+						<input type="email" class="form-control" id="email" name="email" >
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Issue Name:</span>
+						<input type="text" class="form-control" id="report" name="report" />
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">URL:</span>
+						<input type="text" class="form-control" id="url" name="url" />
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Description:</span>
+						<input type="text" class="form-control" id="desc" name="desc" />
+					</div>
+				</div>
+			</div>
+			<div align="center" class="pt-4">
+				<button type="submit" class="btn btn-inherent p-2">Report</button>
+			</div>
+		</div>
+	</form>
+
+{% endblock %}
