@@ -33,3 +33,8 @@ def report():
 @view.route('/admin')
 def dash():
     return render_template('adm_dash.html')
+
+
+@view.route('/charts')
+def chart():
+    return render_template('adm_charts.html')
