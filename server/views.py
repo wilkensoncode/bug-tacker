@@ -3,6 +3,7 @@ from flask import Blueprint, render_template
 view = Blueprint('view', __name__)
 
 
+# client
 @view.route('/')
 def home():
     return render_template('index.html')
@@ -26,3 +27,9 @@ def team():
 @view.route('/report')
 def report():
     return render_template('report.html')
+
+
+# admin
+@view.route('/admin')
+def dash():
+    return render_template('adm_dash.html')
