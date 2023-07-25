@@ -1,0 +1,26 @@
+:root {
+       --hover:#00FFAB;
+       --dark: #262626;
+       --green: #00FFAB;
+       --border-btm: 1px #fff solid;
+       --hero: #37517e;
+       --footer-text: #fff;
+       --footer: #47b2e4;
+       --footer-bg: #f3f5fa;
+       --white: #fff;
+       --about-color: #47b2e4;
+       --sub-headers: #37517e;
+       --action-color: #47b2e4; /* get started btn*/
+       --side-bg: #9BABB8;
+}
+
+
+#wrapper .bg-sidebar {
+    background: var(--side-bg) !important;
+}
+
+
+#wrapper .bug {
+    font-size:35px;
+
+}
