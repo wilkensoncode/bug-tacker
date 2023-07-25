@@ -12,6 +12,7 @@
        --sub-headers: #37517e;
        --action-color: #47b2e4; /* get started btn*/
        --side-bg: #9BABB8;
+       --blue: #FFF;
 }
 
 
@@ -22,5 +23,10 @@
 
 #wrapper .bug {
     font-size:35px;
+
+}
+
+.bg-adm-top-bar {
+    background:var(--blue);
 
 }
