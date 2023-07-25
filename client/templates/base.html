@@ -9,46 +9,51 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300stylesheet,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-	<!-- Template Main CSS File -->
+	<!-- Template CSS File -->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/register.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/form.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/issue.css')}}">
 
 	<title>{% block title %} page {% endblock %}</title>
 
 </head>
 <body>
-	<header class="text-success">
-		<nav class="navbar navbar-expand-lg ">
+	<header class="text-success fixed-top mb-5">
+		<nav class="navbar navbar-expand-lg">
 			<div class="container header-btn">
-				<a class="navbar-brand" href="#"><h1>🐞</h1></a>  <!-- logo-->
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" >
+				<a class="navbar-brand" href="/"><h1>🪲</h1></a>  <!-- logo-->
+				<button class="navbar-toggler head-btn-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" >
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
-					<ul class="navbar-nav header-nav-link float-end">
+					<ul class="navbar-nav header-nav-link">
 						<li class="nav-item">
-							<a class="nav-link display-1" aria-current="page"  href="#">Issues</a>
+							<a class="nav-link display-1" aria-current="page"  href="/issues">Issues</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link display-1 " href="#">Teams</a>
+							<a class="nav-link display-1 " href="/team">Team</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link display-1" href="#">Reports</a>
+							<a class="nav-link display-1" href="/report">Report</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link display-1" href="#">Login</a>
+							<a class="nav-link display-1" href="/login">Login</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link display-1" href="#">Logout</a>
+							<a class="nav-link display-1" href="/logout">Logout</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link display-1" href="/admin">Dashboard</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</header>
-	<div id="page-container" class="container">
+	<div id="page-container" class="container mt-5 pt-4">
 		<main id="content-wrap">
 			<!-- all other page content -->
 			<section">
@@ -69,12 +74,13 @@
 					</div>
 				</div>
 			</div>
-			<span class="p-5">  &copy; all right reserved 🔥 </span>
+			<span class="p-5">  &copy; all right reserved 🐞 </span>
 		</footer>
 	</div>
 
-	<!-- Template Main JS File -->
+	<!-- Template JS File -->
 	<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
 	<script src="{{url_for('static', filename='js/main.js')}}"></script>
 </body>
 </html>

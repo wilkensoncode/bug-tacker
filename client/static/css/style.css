@@ -5,7 +5,8 @@
 }
 
 :root {
-    --dark: #262626;
+    --blue: #61F2F5;
+    --dark: #000;
     --green: #00FFAB;
     --border-btm: 1px #fff solid;
 }
@@ -19,7 +20,14 @@ body {
 
 .header-btn button {
     color: var(--green);
+    border: 1px solid var(--green);
+}
+
+.head-btn-toggler {
+    color: var(--white);
+    border: 1px solid var(--green);
     background:var(--green);
+
 }
 
 .header-nav-link a{

@@ -1,0 +1,43 @@
+:root {
+    --hover:#00FFAB;
+    --dark: #282A3A;
+    --green: #00FFAB;
+    --border-btm: 1px #fff solid;
+    --hero: #37517e;
+    --footer-text: #fff;
+    --footer: #47b2e4;
+    --footer-bg: #f3f5fa;
+    --white: #fff;
+    --about-color: #47b2e4;
+    --sub-headers: #37517e;
+    --blue: #61F2F5 ;
+    --action-color: #47b2e4; /* get started btn*/
+}
+
+.issue-wrapper {
+    padding-top: 15px;
+    border: 1px var(--dark) solid;
+}
+.green {
+    color: var(--dark);
+}
+.desc-btn {
+    cursor: pointer;
+}
+
+.modal {
+    color: var(--dark);
+}
+
+.issue-nav-color {
+   color:var(--blue);
+}
+
+.col select option {
+    color : red;
+    background: red;
+}
+
+.desc-color {
+    color: var(--blue);
+}
