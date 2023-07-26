@@ -1,0 +1,13 @@
+:root {
+    --white: #fff;
+    --blues : #2192FF;
+}
+
+.card-bg {
+    color: var(--white);
+    background-color: transparent !important;
+}
+
+.card-name {
+    color: var(--blues);
+}
