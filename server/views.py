@@ -9,6 +9,11 @@ def home():
     return render_template('index.html')
 
 
+@view.route('/login')
+def login():
+    return render_template('login.html')
+
+
 @view.route('/register')
 def register():
     return render_template('register.html')
@@ -27,14 +32,3 @@ def team():
 @view.route('/report')
 def report():
     return render_template('report.html')
-
-
-# admin
-@view.route('/admin')
-def dash():
-    return render_template('adm_dash.html')
-
-
-@view.route('/charts')
-def chart():
-    return render_template('adm_charts.html')
