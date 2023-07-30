@@ -4,6 +4,9 @@ from website import config
 
 from .server.views import view
 from .server.auths import auth
+# admin
+from .server.admin_views import admin_view
+from .server.admin_auths import admin_auth
 
 import os
 
@@ -24,5 +27,7 @@ def create_app():
     app.config['SECRET_KEY'] = SECRET_KEY
     app.register_blueprint(view, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(admin_view, url_prefix='/')
+    app.register_blueprint(admin_auth, url_prefix='/')
 
     return app
