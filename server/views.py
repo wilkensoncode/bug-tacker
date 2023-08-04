@@ -16,6 +16,7 @@ def login():
 
 @view.route('/logout')
 def logout():
+    print("logout success.")
     return redirect(url_for('view.home'))
 
 
