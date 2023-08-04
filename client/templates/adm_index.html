@@ -1,1 +1,197 @@
-admin html
+
+{% extends 'adm_base.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block main %}
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Dashboard</h1>
+
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Developers</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                       <small><span>56</span> Front-end & <span>99</span> Back-end</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-warning text-white mb-4">
+                    <div class="card-body">Reports</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <small>unverified reported reports</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body">Fixes</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <small><span>56</span> issues fixed</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Bugs</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <small><span>56</span> bugs need to be fix</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area me-1"></i>
+                        Area Chart Bugs
+                    </div>
+                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-1"></i>
+                        Bar Chart Bugs
+                    </div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+               Developer's Stats
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Colleen Hurst</td>
+                        <td>Javascript Developer</td>
+                        <td>San Francisco</td>
+                        <td>2009/09/15</td>
+                        <td>$205,500</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Sonya Frost</td>
+                        <td>Software Engineer</td>
+                        <td>Edinburgh</td>
+                        <td>2008/12/13</td>
+                        <td>$103,600</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Jena Gaines</td>
+                        <td>Office Manager</td>
+                        <td>London</td>
+                        <td>2008/12/19</td>
+                        <td>$90,560</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Quinn Flynn</td>
+                        <td>Support Lead</td>
+                        <td>Edinburgh</td>
+                        <td>2013/03/03</td>
+                        <td>$342,000</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Charde Marshall</td>
+                        <td>Regional Director</td>
+                        <td>San Francisco</td>
+                        <td>2008/10/16</td>
+                        <td>$470,600</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Haley Kennedy</td>
+                        <td>Senior Marketing Designer</td>
+                        <td>London</td>
+                        <td>2012/12/18</td>
+                        <td>$313,500</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Tatyana Fitzpatrick</td>
+                        <td>Regional Director</td>
+                        <td>London</td>
+                        <td>2010/03/17</td>
+                        <td>$385,750</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Michael Silva</td>
+                        <td>Marketing Designer</td>
+                        <td>London</td>
+                        <td>2012/11/27</td>
+                        <td>$198,500</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Paul Byrd</td>
+                        <td>Chief Financial Officer (CFO)</td>
+                        <td>New York</td>
+                        <td>2010/06/09</td>
+                        <td>$725,000</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Gloria Little</td>
+                        <td>Systems Administrator</td>
+                        <td>New York</td>
+                        <td>2009/04/10</td>
+                        <td>$237,500</td>
+                    </tr>
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Bradley Greer</td>
+                        <td>Software Engineer</td>
+                        <td>London</td>
+                        <td>2012/10/13</td>
+                        <td>$132,000</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>example@gmail.com</td>
+                        <td>Donna Snider</td>
+                        <td>Customer Support</td>
+                        <td>New York</td>
+                        <td>2011/01/25</td>
+                        <td>$112,000</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

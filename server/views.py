@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 
 view = Blueprint('view', __name__)
 
@@ -7,6 +7,16 @@ view = Blueprint('view', __name__)
 @view.route('/')
 def home():
     return render_template('index.html')
+
+
+@view.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@view.route('/logout')
+def logout():
+    return redirect(url_for('view.home'))
 
 
 @view.route('/register')
@@ -27,14 +37,3 @@ def team():
 @view.route('/report')
 def report():
     return render_template('report.html')
-
-
-# admin
-@view.route('/admin')
-def dash():
-    return render_template('adm_dash.html')
-
-
-@view.route('/charts')
-def chart():
-    return render_template('adm_charts.html')
