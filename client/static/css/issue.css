@@ -25,6 +25,11 @@
     cursor: pointer;
 }
 
+.issue-status-bg {
+    background: var(--dark);
+    border:none;
+}
+
 .modal {
     color: var(--dark);
 }

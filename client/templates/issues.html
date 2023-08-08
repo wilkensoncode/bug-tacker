@@ -23,7 +23,7 @@
 						<li class="nav-item col">Priority</li>
 						<li class="nav-item col">Assign to</li>
 						<li class="nav-item col">Description</li>
-						<li class="nav-item col">Date</li>
+						<li class="nav-item col">Date Reported</li>
 					</ul>
 				</div>
 			</div>
@@ -34,60 +34,41 @@
 					<li class="col">Bug name</li>
 					<li class="col">Reporter name</li>
 					<li class="col">
-						<select name="status">
-							<option selected disabled > Status </option>
-							<option> Complete </option>
-							<option> In Progress </option>
-							<option> Pending </option>
-						</select>
-					</li>
-					<li class="col">high</li>
-					<li class="col">developer name</li>
-					<li class="col ">
-						<!-- Button trigger modal -->
-						<p data-bs-toggle="modal" data-bs-target="#description" class="desc-btn" >
-							Description <i class="desc-color">⏏︎</i>
-						</p>
-					</li>
-					<li class="col">mm/day/yy</li>
-				</ul>
-
-
-				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2 px-2">
-					<li class="col">Bug name</li>
-					<li class="col">Reporter name</li>
-					<li class="col">
-						<select name="status">
-							<option selected disabled > Status </option>
-							<option> Complete </option>
-							<option> In Progress </option>
-							<option> Pending </option>
-						</select>
-					</li>
-					<li class="col">high</li>
-					<li class="col">developer name</li>
-					<li class="col ">
-						<!-- Button trigger modal -->
-						<p data-bs-toggle="modal" data-bs-target="#description" class="desc-btn" >
-							Description <i class="desc-color">⏏︎</i>
-						</p>
-					</li>
-					<li class="col">mm/day/yy</li>
-				</ul>
-
-
-				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2 px-2">
-					<li class="col">Bug name</li>
-					<li class="col">Reporter name</li>
-					<li class="col">
-
-							<select name="status">
+						<form action="" class="d-flex">
+							<select name="status" class="issue-status-bg text-white">
 								<option selected disabled > Status </option>
 								<option> Complete </option>
 								<option> In Progress </option>
 								<option> Pending </option>
 							</select>
+							<span class="btn color-green">✓</span>
+						</form>
+					</li>
+					<li class="col">high</li>
+					<li class="col">developer name</li>
+					<li class="col ">
+						<!-- Button trigger modal -->
+						<p data-bs-toggle="modal" data-bs-target="#description" class="desc-btn" >
+							Description <i class="desc-color">⏏︎</i>
+						</p>
+					</li>
+					<li class="col">mm/day/yy</li>
+				</ul>
 
+=======
+				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2 px-2">
+					<li class="col">Bug name</li>
+					<li class="col">Reporter name</li>
+					<li class="col">
+						<form action="" class="d-flex">
+							<select name="status" class="issue-status-bg text-white">
+								<option selected disabled > Status </option>
+								<option> Complete </option>
+								<option> In Progress </option>
+								<option> Pending </option>
+							</select>
+							<span class="btn color-green">✓</span>
+						</form>
 					</li>
 					<li class="col">high</li>
 					<li class="col">developer name</li>
