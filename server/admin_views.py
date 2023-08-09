@@ -17,3 +17,8 @@ def dashboard():
 def add_dev():
     return render_template('adm_add_dev.html')
 
+
+@admin_view.route('/admin/reset')
+def reset_pass():
+    return render_template('adm_password.html')
+
