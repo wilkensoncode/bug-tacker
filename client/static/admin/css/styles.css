@@ -13,6 +13,7 @@
 :root {
   --cyan: cyan;
   --red: red;
+  --dark: #262626;
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -111,7 +112,9 @@ body {
     opacity: 1;
 }
 
-
+.dash-card {
+    background: var(--dark) !important;
+}
 
 hr {
   margin: 1rem 0;
