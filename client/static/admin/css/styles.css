@@ -115,7 +115,10 @@ body {
 .dash-card , .dash-dark{
     background: var(--dark) !important;
 }
+.dash-assign {
+    background: var(--bs-body-bg);
 
+}
 .dash-footer{
     background: var(--bs-body-bg);
     opacity: .5;

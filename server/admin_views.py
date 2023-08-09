@@ -22,3 +22,7 @@ def add_dev():
 def reset_pass():
     return render_template('adm_password.html')
 
+
+@admin_view.route('/admin/task')
+def task():
+    return render_template('adm_assign.html')
