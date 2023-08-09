@@ -12,7 +12,3 @@ def admin():
 def dashboard():
     return render_template('adm_dash.html')
 
-
-@admin_view.route('/admin/charts')
-def charts():
-    return render_template('adm_charts.html')
