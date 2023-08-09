@@ -12,3 +12,8 @@ def admin():
 def dashboard():
     return render_template('adm_dash.html')
 
+
+@admin_view.route('/admin/dev')
+def add_dev():
+    return render_template('adm_add_dev.html')
+

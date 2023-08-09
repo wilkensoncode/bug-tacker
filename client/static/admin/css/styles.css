@@ -121,6 +121,16 @@ body {
     opacity: .5;
 }
 
+.btn-add-dev:hover {
+    background: var(--bs-body-bg) !important;
+    color: #000 !important;
+    transition: 1s ease;
+}
+
+.btn-add-dev {
+    background: var(--bs-body-bg) !important;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
