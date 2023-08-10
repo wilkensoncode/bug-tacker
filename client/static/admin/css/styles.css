@@ -65,7 +65,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #ADC4CE;
+  --bs-body-bg: #F4F9F9;  /* body background */
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
@@ -112,12 +112,12 @@ body {
     opacity: 1;
 }
 
-.dash-card , .dash-dark{
+.dash-card, .dash-dark {
     background: var(--dark) !important;
 }
+
 .dash-assign {
     background: var(--bs-body-bg);
-
 }
 .dash-footer{
     background: var(--bs-body-bg);
