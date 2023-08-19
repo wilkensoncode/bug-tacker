@@ -23,16 +23,13 @@ def register():
         password2 = request.form.get('password2')  # confirm password
 
         if not re.match(validate_email, email):
-            flash('Invalid email', category="error")
+            flash('Invalid email -> examplename@gmail.com', category="error")
         elif password1 != password2:
-            flash('Password do not match', category="error")
+            flash('Password do not match Fild One and Field Two must be the same', category="error")
         elif not re.match(validate_psswrd, password1):
-            flash("""Invalid password
-            At least 8 characters long
-            Contains at least one uppercase letter
-            Contains at least one lowercase letter
-            Contains at least one digit
-            Contains at least one special character (e.g., !, @, #, $, etc.)"""
+            flash("""Invalid password: ->  
+            At least 8 characters long 
+            Contains at least one special character (e.g., !, @, #, $, etc.) and number"""
                   , category="error")
         else:
             flash('Registered Successfully', category="success")
