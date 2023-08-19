@@ -4,7 +4,7 @@
 
 {% block section %}
 
-<form>
+<form action="{{url_for('auth.login')}}" method="POST">
 	<div class="login-container">
 		<div class="container">
 			<div class="sign" align="center"><h3>Login</h3></div>
@@ -18,14 +18,14 @@
 				<div class="row p-4">
 					<div class="col input-group">
 						<span class="input-group-text">Password:</span>
-						<input type="email" class="form-control" id="password" name="password" >
+						<input type="password" class="form-control" id="password" name="password" >
 					</div>
 				</div>
 
 			</div>
 			<div align="center" class="pt-5">
 				<button type="submit" class="btn btn-inherent p-2 ">Login</button>
-				<div type="submit" class="pt-5"> Don't have an account ? <a href="/register">Sign up.</a></div>
+				<div class="pt-5"> Don't have an account ? <a href="/register">Sign up.</a></div>
 			</div>
 		</div>
 	</div>
