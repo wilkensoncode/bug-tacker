@@ -1,5 +1,5 @@
 import re
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash, get_flashed_messages
 
 auth = Blueprint('auth', __name__)
 
@@ -27,15 +27,15 @@ def register():
         elif password1 != password2:
             flash('Password do not match', category="error")
         elif not re.match(validate_psswrd, password1):
-            flash('Invalid password \n'
-                  'at 8 characters long \n'
-                  'at least one uppercase letter \n'
-                  'at least one lowercase letter \n'
-                  'at least one digit \n'
-                  'at least one special character (e.g., !, @, #, $, etc.)'
+            flash("""Invalid password
+            At least 8 characters long
+            Contains at least one uppercase letter
+            Contains at least one lowercase letter
+            Contains at least one digit
+            Contains at least one special character (e.g., !, @, #, $, etc.)"""
                   , category="error")
         else:
-            flash('Registered successfully', category="error")
+            flash('Registered Successfully', category="success")
 
     return render_template('register.html')
 
