@@ -4,7 +4,7 @@
 
 {% block section %}
 
-<form>
+<form action="{{url_for('auth.login')}}">
 	<div class="login-container">
 		<div class="container">
 			<div class="sign" align="center"><h3>Login</h3></div>
@@ -25,7 +25,7 @@
 			</div>
 			<div align="center" class="pt-5">
 				<button type="submit" class="btn btn-inherent p-2 ">Login</button>
-				<div type="submit" class="pt-5"> Don't have an account ? <a href="/register">Sign up.</a></div>
+				<div class="pt-5"> Don't have an account ? <a href="/register">Sign up.</a></div>
 			</div>
 		</div>
 	</div>

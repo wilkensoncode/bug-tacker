@@ -2,46 +2,46 @@
 {% block title %} register {% endblock %}
 
 {% block section %}
-	<form action="POST">
-		<div  class="pt-4">
-			<div class="container">
-				<div class="sign pt-5" align="center"><h3>Register</h3></div>
-				<div class="justify-content-center p-2">
-					<div class="row p-4">
-						<div class="col input-group">
-							<span class="input-group-text">First Name:</span>
-							<input type="text" class="form-control" id="firstname" name="firstname">
-						</div>
-					</div>
-					<div class="row p-4">
-						<div class="col input-group">
-							<span class="input-group-text">Last Name:</span>
-							<input type="text" class="form-control" id="lastname" name="lastname">
-						</div>
-					</div>
-					<div class="row p-4">
-						<div class="col input-group">
-							<span class="input-group-text">Email:</span>
-							<input type="email" class="form-control" id="email" name="email" >
-						</div>
-					</div>
-					<div class="row p-4">
-						<div class="col input-group">
-							<span class="input-group-text">Password:</span>
-							<input type="password" class="form-control" id="password1" name="password1" >
-						</div>
-					</div>
-					<div class="row p-4">
-						<div class="col input-group">
-							<span class="input-group-text">Confirm password:</span>
-							<input type="password" class="form-control" id="password2" name="password2">
-						</div>
+<form action="{{url_for('auth.register') }}" method="post">
+	<div class="pt-4">
+		<div class="container">
+			<div class="sign pt-5" align="center"><h3>Register</h3></div>
+			<div class="justify-content-center p-2">
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">First Name:</span>
+						<input type="text" class="form-control"  name="first_name">
 					</div>
 				</div>
-				<div align="center" class="pt-4">
-					<button type="submit" class="btn btn-inherent p-2">sign Up</button>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Last Name:</span>
+						<input type="text" class="form-control"  name="last_name">
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Email:</span>
+						<input type="email" class="form-control"  name="email">
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Password:</span>
+						<input type="password" class="form-control"  name="password1">
+					</div>
+				</div>
+				<div class="row p-4">
+					<div class="col input-group">
+						<span class="input-group-text">Confirm password:</span>
+						<input type="password" class="form-control" id="password2" name="password2">
+					</div>
 				</div>
 			</div>
+			<div align="center" class="pt-4">
+				<button type="submit" class="btn btn-inherent p-2">Sign Up</button>
+			</div>
 		</div>
-	</form>
+	</div>
+</form>
 {% endblock %}

@@ -10,21 +10,24 @@ from .server.admin_auths import admin_auth
 
 import os
 
-config_folder = os.path.dirname(os.path.abspath('./config'))
+#  get path to config directory
+config_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config')
 
-env_files = {
-    'secret': os.path.join(config_folder, 'config', 'secret.env')
-}
+# Loop through files in the config directory
+for filename in os.listdir(config_dir):
+    # Check if file has a .env extension
+    if filename.endswith('.env'):
+        # Load environment variables from file
+        env_file_path = os.path.join(config_dir, filename)
+        load_dotenv(env_file_path)
 
-for file_path in env_files:
-    load_dotenv(env_files[file_path])
-
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')  # set secret key
 
 
 def create_app():
     app = Flask(__name__, template_folder='client/templates', static_folder='client/static')
-    app.config['SECRET_KEY'] = SECRET_KEY
+    app.config['SECRET_KEY'] = SECRET_KEY  # set secret key
+
     app.register_blueprint(view, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(admin_view, url_prefix='/')
