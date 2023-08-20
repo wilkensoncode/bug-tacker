@@ -87,22 +87,12 @@
 				{% block section %} section {% endblock %}
 			</section>
 		</main>
+		{% block footer %}  {% endblock %}
 		<footer id="footer">
-			<div class="footer-newsletter">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-6">
-							<h4>Join Our Newsletter</h4>
-							<p>Be the first know when we launch a new product and get great discount. </p>
-							<form action="{{url_for('view.subscribe')}}">
-								<input type="email" name="email"><input type="submit" value="Subscribe">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<span class="p-5">  &copy; all right reserved 🐞 </span>
+
+<!--			<span class="p-5">  &copy; all right reserved 🐞 </span>-->
 		</footer>
+
 	</div>
 
 	<!-- Template JS File -->
