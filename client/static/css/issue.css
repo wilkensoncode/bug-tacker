@@ -46,3 +46,13 @@
 .desc-color {
     color: var(--blue);
 }
+
+.btn-status {
+    color: var(--blue) !important;
+    border-bottom: solid 2px var(--blue) !important;
+}
+
+.btn-status:hover {
+    color: var(--blue) !important;
+    border-bottom: solid 2px var(--action-color) !important;
+}

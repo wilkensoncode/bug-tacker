@@ -20,5 +20,5 @@ class Report(db.Model):
     issue_name = db.Column(db.String(100))
 
 
-# input from admin
+
 
