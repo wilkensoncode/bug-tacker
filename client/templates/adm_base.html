@@ -36,6 +36,7 @@
 			</ul>
 		</div>
 	</nav>
+
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark dash-dark" id="sidenavAccordion">
@@ -98,9 +99,33 @@
 			<main>
 					{% block main %} section {% endblock %}
 			</main>
+			<div class="container">
+				{% with messages = get_flashed_messages(with_categories=true) %}
+				{% if messages %}
+				{% for category, message in messages %}
+				{% if category == "error" %}
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>{{ message }}</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+				{% elif category == "success" %}
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>{{ message }}</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+				{% else %}
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<strong>{{ message }}</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+				{% endif %}
+				{% endfor %}
+				{% endif %}
+				{% endwith %}
+			</div>
+
 		</div>
 	</div>
-
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="{{url_for('static', filename='admin/js/scripts.js')}}"></script>

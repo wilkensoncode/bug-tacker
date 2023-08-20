@@ -131,7 +131,7 @@
 	</div>
 <!-- assign task -->
 
-	<form>
+	<form action="{{ url_for('admin_view.task') }}" method="POST">
 		<div class="row ">
 			<div class="input-group mb-3 col">
 				<span class="input-group-text" id="Bug ID">Bug/Issue ID</span>
@@ -145,16 +145,13 @@
 
 			<div class="input-group mb-3 col">
 				<span class="input-group-text" id="priority">Priority</span>
-				<select class=" col border-0">
+				<select class=" col border-0" name="priority">
 					<option disabled selected>priority</option>
-					<option value="high" name="high" class="form-control">High</option>
-					<option value="low" name="low" class="form-control">Medium</option>
-					<option value="low" name="low" class="form-control">Low</option>
+					<option value="high"  class="form-control">High</option>
+					<option value="low"  class="form-control">Medium</option>
+					<option value="low" class="form-control">Low</option>
 				</select>
-
 			</div>
-
-
 		</div>
 		<div class="mt-2 mb-5 d-flex justify-content-end">
 			<button class="btn btn-dark text-white ">Assign</button>
