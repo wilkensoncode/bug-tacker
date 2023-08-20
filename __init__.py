@@ -33,6 +33,8 @@ def create_app():
     app = Flask(__name__, template_folder='client/templates', static_folder='client/static')
     app.config['SECRET_KEY'] = SECRET_KEY  # set secret key
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    # db.init_app(app)
+
     # user route
     app.register_blueprint(view, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
