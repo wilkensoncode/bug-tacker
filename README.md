@@ -1,1 +1,0 @@
-# Issue Tracker |  🐞 Tracker

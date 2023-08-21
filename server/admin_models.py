@@ -1,8 +1,9 @@
 from website import db
+from flask_login import UserMixin
 
 
-class UserAdmin(db.Model):
-    id = db.Column(db.Intger, primary_key=True)
+class UserAdmin(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(250))
     password = db.Column(db.String(250))
 
@@ -23,7 +24,7 @@ class Salary(db.Model):
 
 
 class Issue(db.Model):
-    id = db.Column(db.Integer, primay_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(100))
     priority = db.Column(db.String(100))
     assign = db.Column(db.String(100))

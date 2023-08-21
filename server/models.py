@@ -1,6 +1,6 @@
 from website import db
-
 from flask_login import UserMixin
+from sqlalchemy.sql import func
 
 
 class User(db.Model):
@@ -18,6 +18,7 @@ class Report(db.Model):
     last_name = db.Column(db.String(100))
     description = db.Column(db.String(500))
     issue_name = db.Column(db.String(100))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())  # get date by default
 
 
 

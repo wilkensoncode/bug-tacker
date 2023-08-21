@@ -1,5 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
+
 from website import config
 #  users
 from .server.views import view
@@ -9,6 +10,7 @@ from .server.admin_views import admin_view
 from .server.admin_auths import admin_auth
 
 from flask_sqlalchemy import SQLAlchemy
+from os import path
 
 import os
 
@@ -33,7 +35,8 @@ def create_app():
     app = Flask(__name__, template_folder='client/templates', static_folder='client/static')
     app.config['SECRET_KEY'] = SECRET_KEY  # set secret key
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
-    # db.init_app(app)
+
+    db.init_app(app)
 
     # user route
     app.register_blueprint(view, url_prefix='/')
@@ -42,4 +45,15 @@ def create_app():
     app.register_blueprint(admin_view, url_prefix='/')
     app.register_blueprint(admin_auth, url_prefix='/')
 
+    from .server import models, admin_models  # load all models before creating db
+
+    with app.app_context():
+        create_database()
+
     return app
+
+
+def create_database():
+    if not path.exists('website/' + DB_NAME):
+        db.create_all()
+        print('created database')
