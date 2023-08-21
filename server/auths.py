@@ -1,11 +1,13 @@
 import re
 from flask import Blueprint, render_template, redirect, url_for, request, flash, get_flashed_messages
 
+from werkzeug.security import check_password_hash, generate_password_hash
+
 auth = Blueprint('auth', __name__)
 
 
 def validate_credential(email=None, password=None):
-    validate_email = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  # pattern validate email
+    validate_email = r"^[A-a-zZ0-9.%_+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  # pattern validate email
     validate_psswrd = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"  # validate pass
     if email and not password:
         return re.match(validate_email, email)
@@ -51,6 +53,17 @@ def register():
             Contains at least one special character (e.g., !, @, #, $, etc.) and at least a number"""
                   , category="error")
         else:
+            from .models import User
+            from website import db
+
+            new_user = User(first_name=first_name, last_name=last_name, email=email,
+                            password1=generate_password_hash(password1, method='sha256'),
+                            password2=password2)
+
+            #  add new user to db
+            db.session.add(new_user)
+            db.session.commit()
+
             flash('Registered Successfully', category="success")
 
     return render_template('register.html')
