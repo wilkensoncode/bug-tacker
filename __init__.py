@@ -45,7 +45,7 @@ def create_app():
     app.register_blueprint(admin_view, url_prefix='/')
     app.register_blueprint(admin_auth, url_prefix='/')
 
-    from .server import models, admin_models  # load all models before creating db
+    from .server import models, admin_models  # load all models before creating db not being used anywhere
 
     with app.app_context():
         create_database()
@@ -57,3 +57,4 @@ def create_database():
     if not path.exists('website/' + DB_NAME):
         db.create_all()
         print('created database')
+
