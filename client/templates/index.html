@@ -1,88 +1,86 @@
- {% extends 'base.html' %}
- {% block title %} Home {% endblock %}
- {% block section %}
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block section %}
 
- <!-- ======= Hero Section ======= -->
- <section id="hero" class="d-flex align-items-center">
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
 
   <div class="container">
-   <div class="row">
-    <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-     <h1>Manage All Your Projects And Team</h1>
-     <h2>Powerful project management for all your teams.</h2>
-     <div class="d-flex justify-content-center justify-content-lg-start">
-      <a href="/register" class="btn btn-get-started" type="button">Get Started</a>
-     </div>
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up"
+        data-aos-delay="200">
+        <h1>Manage All Your Projects And Team</h1>
+        <h2>Powerful project management for all your teams.</h2>
+        <div class="spinner d-flex justify-content-center justify-content-lg-start">
+          <a href="/register" class="btn btn-get-started " type="button">Get Started</a>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+        <img src="{{url_for('static',filename='assets/img/hero-img.png')}}" class="img-fluid animated" alt="hero image">
+      </div>
     </div>
-    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-     <img src="{{url_for('static',filename='assets/img/hero-img.png')}}" class="img-fluid animated" alt="hero image">
-    </div>
-   </div>
   </div>
 
- </section><!-- End Hero -->
+</section><!-- End Hero -->
 
- <main id="main">
+<main id="main">
   <!-- ======= About Us Section ======= -->
-   <section id="about" class="about">
+  <section id="about" class="about">
     <div class="container" data-aos="fade-up">
 
-     <div class="section-title">
-      <h2> About Us</h2>
-     </div>
+      <div class="section-title">
+        <h2> About Us</h2>
+      </div>
 
-     <div class="row content">
-      <div class="col-lg-6">
-       <p>
-        we are dedicated to pushing the boundaries of innovation and technology.
-        Our mission is to create cutting-edge solutions that empower individuals and businesses
-        to thrive in the digital age.
-        With a team of passionate experts, we specialize in developing software that seamlessly integrates
-        into your daily life.
-       </p>
-       <ul>
-        <li><i class="ri-check-double-line"></i>making complex tasks simple and efficient</li>
-        <li><i class="ri-check-double-line"></i>Our commitment to excellence drives us to continuously refine and enhance our products</li>
-        <li><i class="ri-check-double-line"></i>ensuring that they meet the highest standards of quality and performance.</li>
-       </ul>
+      <div class="row content">
+        <div class="col-lg-6">
+          <p>
+            we are dedicated to pushing the boundaries of innovation and technology.
+            Our mission is to create cutting-edge solutions that empower individuals and businesses
+            to thrive in the digital age.
+            With a team of passionate experts, we specialize in developing software that seamlessly integrates
+            into your daily life.
+          </p>
+          <ul>
+            <li><i class="ri-check-double-line"></i>making complex tasks simple and efficient</li>
+            <li><i class="ri-check-double-line"></i>Our commitment to excellence drives us to continuously refine and
+              enhance our products</li>
+            <li><i class="ri-check-double-line"></i>ensuring that they meet the highest standards of quality and
+              performance.</li>
+          </ul>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <p>
+            As we look towards the future, we remain steadfast in our commitment
+            to staying at the forefront of technological advancements.
+            We constantly explore new possibilities, from AI-driven solutions
+            to the latest in cybersecurity, to ensure that our users are equipped with
+            the best tools to navigate the digital landscape confidently.
+          </p>
+          <a href="#" class="btn-learn-more">Learn More</a>
+        </div>
       </div>
-      <div class="col-lg-6 pt-4 pt-lg-0">
-       <p>
-        As we look towards the future, we remain steadfast in our commitment
-        to staying at the forefront of technological advancements.
-        We constantly explore new possibilities, from AI-driven solutions
-        to the latest in cybersecurity, to ensure that our users are equipped with
-        the best tools to navigate the digital landscape confidently.
-       </p>
-       <a href="#" class="btn-learn-more">Learn More</a>
-      </div>
-     </div>
 
     </div>
-   </section><!-- End About Us Section -->
- </main>
- {% block footer %}
-  <footer id="footer">
-   <div class="footer-newsletter">
+  </section><!-- End About Us Section -->
+</main>
+{% block footer %}
+<footer id="footer">
+  <div class="footer-newsletter">
     <div class="container">
-     <div class="row justify-content-center">
-      <div class="col-lg-6">
-       <h4>Join Our Newsletter</h4>
-       <p>Be the first know when we launch a new product and get great discount. </p>
-       <form action="{{url_for('view.subscribe')}}">
-        <input type="email" name="email"><input type="submit" value="Subscribe">
-       </form>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h4>Join Our Newsletter</h4>
+          <p>Be the first know when we launch a new product and get great discount. </p>
+          <form action="{{url_for('view.subscribe')}}">
+            <input type="email" name="email"><input type="submit" value="Subscribe">
+          </form>
+        </div>
       </div>
-     </div>
     </div>
-   </div>
-<!--   <span class="p-5">  &copy; all right reserved 🐞 </span>-->
-  </footer>
- {% endblock %}
+  </div>
+  <!--   <span class="p-5">  &copy; all right reserved 🐞 </span>-->
+</footer>
+{% endblock %}
 
-  {% endblock %}
-
-
-
-
-
+{% endblock %}
