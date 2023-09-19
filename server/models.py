@@ -1,5 +1,4 @@
 from website import db
-from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 
@@ -20,6 +19,8 @@ class Report(db.Model):
     description = db.Column(db.String(500))
     date = db.Column(db.DateTime(timezone=True), default=func.now())  # get date by default
 
-
+class IssueStatus(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    status = db.Column(db.String(15))
 
 
