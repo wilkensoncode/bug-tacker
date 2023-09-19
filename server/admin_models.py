@@ -1,7 +1,4 @@
-from website import db 
-
-def user_name(name):
-    return name
+from website import db  
 
 class UserAdmin(db.Model):
     id = db.Column(db.Integer, primary_key=True)

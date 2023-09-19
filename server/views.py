@@ -1,13 +1,11 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash
 
-view = Blueprint('view', __name__)
-
+view = Blueprint('view', __name__) 
 
 # client
 @view.route('/')
 def home():
-    return render_template('index.html')
-
+    return render_template('index.html') 
 
 @view.route('/issues', methods=["GET", "POST"])
 def issues():
