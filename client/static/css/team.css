@@ -1,6 +1,6 @@
 :root {
-    --white: #fff;
-    --blues : #2192FF;
+    --white: hsl(0, 0%, 100%);
+    --blues : hsl(209, 100%, 56%);
 }
 
 .card-bg {

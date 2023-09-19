@@ -31,7 +31,7 @@
     color:var(--green)
 }
 
-.col input, span{
+.col input, .input{
     border-top: none;
     border-left:None;
     border-right:none;

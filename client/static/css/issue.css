@@ -1,17 +1,17 @@
 :root {
-    --hover:#00FFAB;
-    --dark: #282A3A;
-    --green: #00FFAB;
-    --border-btm: 1px #fff solid;
-    --hero: #37517e;
-    --footer-text: #fff;
-    --footer: #47b2e4;
-    --footer-bg: #f3f5fa;
-    --white: #fff;
-    --about-color: #47b2e4;
-    --sub-headers: #37517e;
-    --blue: #61F2F5 ;
-    --action-color: #47b2e4; /* get started btn*/
+    --hover:hsl(160, 100%, 50%);
+    --dark: hsl(233, 18%, 19%);
+    --green: hsl(160, 100%, 50%);
+    --border-btm: 1px hsl(0, 0%, 100%) solid;
+    --hero: hsl(218, 39%, 35%);
+    --footer-text: hsl(0, 0%, 100%);
+    --footer: hsl(199, 74%, 59%);
+    --footer-bg: hsl(223, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --about-color: hsl(199, 74%, 59%);
+    --sub-headers: hsl(218, 39%, 35%);
+    --blue: hsl(181, 88%, 67%) ;
+    --action-color: hsl(199, 74%, 59%); /* get started btn*/
 }
 
 .issue-wrapper {

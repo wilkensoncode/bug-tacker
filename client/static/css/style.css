@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto+Mono&family=Roboto:wght@500&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -5,16 +6,20 @@
 }
 
 :root {
-    --blue: #61F2F5;
-    --dark: #000;
-    --green: #00FFAB;
-    --border-btm: 1px #fff solid;
+    --blue: hsl(181, 88%, 67%);
+    --dark: hsl(0, 0%, 0%);
+    --green: hsl(160, 100%, 50%);
+    --border-btm: 1px hsl(0, 0%, 100%) solid;
 }
 
 body {
     background: var(--dark);
-    color:white;
+    color:hsl(0, 0%, 100%);
     position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 /* header styling*/
 
@@ -42,7 +47,7 @@ body {
     color: var(--green);
 }
 .header-nav-link a:hover{
-    color: green;
+    color: hsl(120, 100%, 25%);
 }
 
 /*  keep footer at the bottom */
