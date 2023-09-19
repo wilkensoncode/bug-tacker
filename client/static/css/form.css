@@ -44,7 +44,7 @@
   background-color: var(--dark);
 }
 
-.col span {
+.col .ipnut {
     background-color: var(--dark);
     border-top: none;
     border-left:None;
@@ -62,7 +62,7 @@
 }
 
 .col span, input {
-         display: block;
+   display: block;
 }
 .col input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--white);
