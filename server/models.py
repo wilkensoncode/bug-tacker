@@ -16,8 +16,8 @@ class Report(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
-    description = db.Column(db.String(500))
     issue_name = db.Column(db.String(100))
+    description = db.Column(db.String(500))
     date = db.Column(db.DateTime(timezone=True), default=func.now())  # get date by default
 
 
