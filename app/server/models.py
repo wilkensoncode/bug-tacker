@@ -11,6 +11,8 @@ class User(db.Model):
     admin = db.Column(db.Boolean, default=False)
     password1 = db.Column(db.String(250))
     password2 = db.Column(db.String(250))
+    date_created = db.Column(db.DateTime(timezone=True),
+                             default=func.now())
 
 
 class Report(db.Model):
@@ -19,13 +21,16 @@ class Report(db.Model):
     last_name = db.Column(db.String(100))
     issue_name = db.Column(db.String(100))
     description = db.Column(db.String(500))
-    date = db.Column(db.DateTime(timezone=True),
-                     default=func.now())  # get date by default
+    date_created = db.Column(db.DateTime(timezone=True),
+                             default=func.now())
 
 
 class IssueStatus(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(15))
+    documentation = db.Column(db.String(500))
+    date_created = db.Column(db.DateTime(timezone=True),
+                             default=func.now())
 
 
 class Developer(db.Model):
@@ -37,10 +42,13 @@ class Developer(db.Model):
     office = db.Column(db.String(100))
     position = db.Column(db.String(100))
     start_date = db.Column(db.String(100))
+    date_created = db.Column(db.DateTime(timezone=True),
+                             default=func.now())
 
 
 class AssignTask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     issueId = db.Column(db.Integer)
     DeveloperId = db.Column(db.Integer)
-    priority = db.Column(db.String(100))
+    date_created = db.Column(db.DateTime(timezone=True),
+                             default=func.now())
