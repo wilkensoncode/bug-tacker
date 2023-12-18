@@ -5,11 +5,11 @@
 
 <div class="pb-5">
 	<div class="container">
-		<div class="sign pt-5 pb-5 position-relative" align="center">
+		<div class="sign pt-2 pb-5 position-relative" align="center">
 			<h3>
 				Issues &nbsp;
 				<span class="position-absolute top-3 start-90 translate-end badge rounded-pill bg-success">
-					9 <span class="visually-hidden">unread messages</span>
+					2 <span class="visually-hidden">unread messages</span>
 				</span>
 			</h3>
 		</div>
@@ -30,12 +30,12 @@
 		<div class="mb-2 shadow">
 			<!--	Issues	 -->
 			<div>
-				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2 px-2">
-					<li class="col">Bug name</li>
-					<li class="col">Reporter name</li>
+				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2">
+					<li class="col pt-2">Bug name</li>
+					<li class="col pt-2">Reporter name</li>
 					<li class="col">
-						<form action="{{url_for('view.issues')}}" method="POST" class="d-flex">
-							<select name="status" class="issue-status-bg text-white">
+						<form action="{{url_for('view.issues')}}" method="POST" class="d-flex  justify-content-center">
+							<select name="status" class="issue-status-bg text-white d-flex  justify-content-center">
 								<option selected disabled> Status </option>
 								<option> Complete </option>
 								<option> In Progress </option>
@@ -43,8 +43,8 @@
 							<button type="submit" class="btn color-green btn-status"> ✓ </button>
 						</form>
 					</li>
-					<li class="col">high</li>
-					<li class="col ">
+					<li class="col pt-2">high</li>
+					<li class="col">
 						<!-- Button trigger modal -->
 						<p data-bs-toggle="modal" data-bs-target="#description" class="btn-issue-desc mt-2">
 							Description<i class="desc-color">⏏︎</i>
@@ -59,12 +59,12 @@
 			</div>
 
 			<div>
-				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2 px-2">
-					<li class="col">Bug name</li>
-					<li class="col">Reporter name</li>
+				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2">
+					<li class="col pt-2">Bug name</li>
+					<li class="col pt-2">Reporter name</li>
 					<li class="col">
-						<form action="{{url_for('view.issues')}}" method="POST" class="d-flex">
-							<select name="status" class="issue-status-bg text-white">
+						<form action="{{url_for('view.issues')}}" method="POST" class="d-flex  justify-content-center">
+							<select name="status" class="issue-status-bg text-white d-flex  justify-content-center">
 								<option selected disabled> Status </option>
 								<option> Complete </option>
 								<option> In Progress </option>
@@ -72,23 +72,21 @@
 							<button type="submit" class="btn color-green btn-status"> ✓ </button>
 						</form>
 					</li>
-					<li class="col">high</li>
-					<li class="col ">
-						<!-- Button trigger modal -->
-						<div data-bs-toggle="modal" data-bs-target="#description" class="btn-issue-desc mt-2">
-							Description<i class="desc-color">⏏︎</i>
-						</div>
-					</li>
-
+					<li class="col pt-2">high</li>
 					<li class="col">
-						<div class="btn-issue-doc mt-2">
-							Add doc<i class="desc-color">📄</i>
-						</div>
+						<!-- Button trigger modal -->
+						<p data-bs-toggle="modal" data-bs-target="#description" class="btn-issue-desc mt-2">
+							Description<i class="desc-color">⏏︎</i>
+						</p>
+					</li>
+					<li class="col">
+						<div class="btn-issue-doc mt-2">Add doc <i class="desc-color">📄</i></div>
 					</li>
 					<div class="doc-issue-wrapper"></div>
 				</ul>
 				<hr>
 			</div>
+
 
 			<!-- Description -->
 			<div class="modal fade" id="description" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -117,3 +115,11 @@
 	</div>
 </div>
 {% endblock %}
+{% block footer %}
+<div>
+	<footer id="footer">
+		<span class="p-5"> &copy; all right reserved 🐞 </span>
+	</footer>
+</div>
+{% endblock %}
+```
