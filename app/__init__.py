@@ -6,7 +6,7 @@ from .server.auths import auth
 
 from .server.admin_views import admin_view
 from .server.admin_auths import admin_auth
-
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 
@@ -46,6 +46,15 @@ def create_app():
 
     app.register_blueprint(admin_view, url_prefix='/')
     app.register_blueprint(admin_auth, url_prefix='/')
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        from .server.models import User
+        return User.query.get(int(id))
 
     from .server import models
 

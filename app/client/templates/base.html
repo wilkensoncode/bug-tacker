@@ -37,25 +37,36 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
+
 					<ul class="navbar-nav header-nav-link">
+						{% if current_user.is_authenticated %}
+
 						<li class="nav-item">
 							<a class="nav-link display-1" aria-current="page" href="/issues">Dash</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link display-1 " href="/team">Team</a>
 						</li>
+
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/report">Report</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link display-1" href="/login">Login</a>
-						</li>
+
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/logout">Logout</a>
 						</li>
+						{% else %}
+
+						<li class="nav-item">
+							<a class="nav-link display-1" href="/login">Login</a>
+						</li>
+
+						{% if current_user.admin == true %}
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/admin">Dashboard</a>
 						</li>
+						{% endif %}
+						{% endif %}
 					</ul>
 				</div>
 			</div>
@@ -63,7 +74,10 @@
 	</header>
 
 	<div id="page-container" class="container mt-5 pt-4">
-
+		<p class="pt-2">
+			<span class="welcome h4">Welcome</span>
+			<span class="welcome-name">{{current_user.first_name}}</span>
+		</p>
 		<div class="container flash-position">
 			{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
@@ -89,19 +103,14 @@
 			{% endwith %}
 		</div>
 		<main id="content-wrap">
-			<!-- all other page content -->
-			<section">
+			<section style="height:100vh">
 				{% block section %} section {% endblock %}
-				</section>
+			</section>
 		</main>
-		{% block footer %} {% endblock %}
-		<footer id="footer">
-
-			<!--			<span class="p-5">  &copy; all right reserved 🐞 </span>-->
+		<footer align="center">
+			<span class="p-5"> &copy; all right reserved 🐞 </span>
 		</footer>
-
 	</div>
-
 	<!-- Template JS File -->
 	<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
 	<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>

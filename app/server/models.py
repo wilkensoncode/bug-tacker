@@ -1,16 +1,16 @@
 from app import db
+from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100))
-    first_last = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
     email = db.Column(db.String(250))
-    user_name = db.Column(db.String(250))
+    username = db.Column(db.String(250))
     admin = db.Column(db.Boolean, default=False)
     password1 = db.Column(db.String(250))
-    password2 = db.Column(db.String(250))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 
