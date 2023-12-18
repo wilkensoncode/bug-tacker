@@ -7,6 +7,7 @@ class User(db.Model):
     first_name = db.Column(db.String(100))
     first_last = db.Column(db.String(100))
     email = db.Column(db.String(250))
+    user_name = db.Column(db.String(250))
     admin = db.Column(db.Boolean, default=False)
     password1 = db.Column(db.String(250))
     password2 = db.Column(db.String(250))
