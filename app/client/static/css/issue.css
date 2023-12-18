@@ -18,11 +18,45 @@
     padding-top: 15px;
     border: 1px var(--dark) solid;
 }
+/* ---------------------------------------- */
+.btn-issue-doc{
+    border: 1px var(--blue) solid;
+    width: 85px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 1px .5px 1px .5px var(--blue);
+}
+
+.btn-issue-doc:hover{
+    top: 0;
+    left: 0; 
+    box-sizing: border-box;  
+    animation: ease-in 1s; 
+    color: var(--white);
+    box-shadow: 0 0 5px 1px  var(--blue);
+
+}
+
+.btn-issue-desc{
+    border: 1px var(--blue) solid;
+    width: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 1px .5px 1px .5px var(--blue);
+}
+
+.btn-issue-desc:hover{
+    top: 0;
+    left: 0; 
+    box-sizing: border-box;  
+    animation: ease-in 1s; 
+    color: var(--white);
+    box-shadow: 0 0 5px 1px  var(--blue);
+}
+
+/* -------------------------------- */
 .green {
     color: var(--dark);
-}
-.desc-btn {
-    cursor: pointer;
 }
 
 .issue-status-bg {
@@ -30,7 +64,8 @@
     border:none;
 }
 
-.modal {
+.modal { 
+    /* modal text */
     color: var(--dark);
 }
 
