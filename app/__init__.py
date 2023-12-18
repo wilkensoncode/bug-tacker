@@ -1,11 +1,9 @@
 from flask import Flask
 from dotenv import load_dotenv
 
-from website import config
-#  users
 from .server.views import view
 from .server.auths import auth
-# admin
+
 from .server.admin_views import admin_view
 from .server.admin_auths import admin_auth
 
@@ -14,47 +12,47 @@ from os import path
 
 import os
 
-#  get path to config directory
+# path to condig folder
 config_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config')
 
-# Loop through files in the config directory
+
 for filename in os.listdir(config_dir):
-    # Check if file has a .env extension
     if filename.endswith('.env'):
-        # Load environment variables from file
         env_file_path = os.path.join(config_dir, filename)
         load_dotenv(env_file_path)
 
-SECRET_KEY = os.getenv('SECRET_KEY')  # set secret key
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 db = SQLAlchemy()
-DB_NAME = "database.db"
+
+IP = os.getenv('MYSQL_IP')
+USERNAME = os.getenv('MYSQL_USER')
+PASSWORD = os.getenv('MYSQL_PASS')
+DB_NAME = os.getenv('MYSQL_DB')
 
 
 def create_app():
-    app = Flask(__name__, template_folder='client/templates', static_folder='client/static')
-    app.config['SECRET_KEY'] = SECRET_KEY  # set secret key
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    app = Flask(__name__, template_folder='client/templates',
+                static_folder='client/static')
+    app.config['SECRET_KEY'] = SECRET_KEY
+    DB_CONFIG_STR = f"mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{IP}/{DB_NAME}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = DB_CONFIG_STR
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
     db.init_app(app)
 
-    # user route
     app.register_blueprint(view, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-    # admin route
+
     app.register_blueprint(admin_view, url_prefix='/')
     app.register_blueprint(admin_auth, url_prefix='/')
 
-    from .server import models, admin_models  # load all models before creating db not being used anywhere
+    from .server import models
 
     with app.app_context():
-        create_database()
+        db.create_all()
 
     return app
 
 
-def create_database():
-    if not path.exists('website/' + DB_NAME):
-        db.create_all()
-        print('created database')
-
+app = create_app()

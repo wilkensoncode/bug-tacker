@@ -19,6 +19,13 @@ body {
     position: relative; 
     font-family: 'Lato', sans-serif; 
 }
+.flash-position{
+    position: absolute;
+    top: 10;
+    right: 0;
+    z-index: 1000;
+
+}
 /* header styling*/
 
 .header-btn button {

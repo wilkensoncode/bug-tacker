@@ -25,7 +25,7 @@
 
 </head>
 
-<body>
+<body style="position: relative;">
 	<header class="text-success fixed-top mb-5 header-bg">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container header-btn">
@@ -64,7 +64,7 @@
 
 	<div id="page-container" class="container mt-5 pt-4">
 
-		<div class="container">
+		<div class="container flash-position">
 			{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
 			{% for category, message in messages %}
