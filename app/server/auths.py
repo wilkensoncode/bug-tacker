@@ -7,9 +7,9 @@ auth = Blueprint('auth', __name__)
 
 
 def validate_credential(email=None, password=None):
-    # pattern validate email
+
     validate_email = r"^[A-a-zZ0-9.%_+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-    # validate pass
+
     validate_psswrd = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
     if email and not password:
         return re.match(validate_email, email)
@@ -45,7 +45,6 @@ def login():
 
 
 @auth.route('/register', methods=["GET", "POST"])
-@login_required
 def register():
     if request.method == "POST":
 
@@ -82,6 +81,7 @@ def register():
 
 
 @auth.route('/logout')
+@login_required
 def logout():
     flash("logout success.", category="success")
     return redirect(url_for('view.home'))

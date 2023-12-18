@@ -31,7 +31,7 @@
 			<div class="container header-btn">
 				<a class="navbar-brand" href="/">
 					<h1>🪲</h1>
-				</a> <!-- logo-->
+				</a>
 				<button class="navbar-toggler head-btn-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarNav">
 					<span class="navbar-toggler-icon"></span>
@@ -74,10 +74,12 @@
 	</header>
 
 	<div id="page-container" class="container mt-5 pt-4">
+		{% if current_user.is_authenticated %}
 		<p class="pt-2">
 			<span class="welcome h4">Welcome</span>
 			<span class="welcome-name">{{current_user.first_name}}</span>
 		</p>
+		{% endif %}
 		<div class="container flash-position">
 			{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
