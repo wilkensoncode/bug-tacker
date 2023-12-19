@@ -12,20 +12,22 @@
 		<ul>
 			<div class="justify-content-center p-2">
 				<div class="row p-4">
+					{% if developers %}
+					{% for developer in developers %}
 					<div class="col mb-2">
 						<div class="card card-bg  shadow " style="width: 18rem;">
 							<div class="card-body bg-none ">
 								<div class="row justify-content-center align-items-center">
 									<div class="col">
-										<h5 class="card-title card-name">Samara</h5>
-										ID: 457884 <br>
-										Senior Software Engineer
+										<h5 class="card-title card-name">{{developer.first_name}}</h5>
+										<br>
+										{{developer.position}}
 									</div>
 								</div>
 								<div class="row">
 									<div class="col">
 										<p class="card-text">
-											Email:&nbsp;sakjlkjsfkjhdsfusfj@gamil.com
+											{{developer.email}}
 										</p>
 									</div>
 								</div>
@@ -33,111 +35,8 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="col mb-2">
-						<div class="card card-bg  shadow " style="width: 18rem;">
-							<div class="card-body bg-none ">
-								<div class="row justify-content-center align-items-center">
-									<div class="col">
-										<h5 class="card-title card-name">miishu</h5>
-										ID: 457884 <br>
-										Senior Software Engineer
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<p class="card-text">
-											Email:&nbsp;sakjlkjsfkjhdsfusfj@gamil.com
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col  mb-2">
-						<div class="card card-bg  shadow " style="width: 18rem;">
-							<div class="card-body bg-none ">
-								<div class="row justify-content-center align-items-center">
-									<div class="col">
-										<h5 class="card-title card-name">Joseph</h5>
-										ID: 457884 <br>
-										Senior Software Engineer
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<p class="card-text">
-											Email:&nbsp;sakjlkjsfkjhdsfusfj@gamil.com
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col mb-2">
-						<div class="card card-bg  shadow " style="width: 18rem;">
-							<div class="card-body bg-none ">
-								<div class="row justify-content-center align-items-center">
-									<div class="col">
-										<h5 class="card-title card-name">John</h5>
-										ID: 457884 <br>
-										Senior Software Engineer
-									</div>
-									<div class="col">
-										<p class="card-text">
-											Email:&nbsp;sakjlkjsfkjhdsfusfj@gamil.com
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col mb-2">
-						<div class="card card-bg  shadow " style="width: 18rem;">
-							<div class="card-body bg-none ">
-								<div class="row justify-content-center align-items-center">
-									<div class="col">
-										<h5 class="card-title card-name">John</h5>
-										ID: 457884 <br>
-										Senior Software Engineer
-									</div>
-									<div class="col">
-										<p class="card-text">
-											Email:&nbsp;sakjlkjsfkjhdsfusfj@gamil.com
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col mb-2">
-						<div class="card card-bg  shadow " style="width: 18rem;">
-							<div class="card-body bg-none ">
-								<div class="row justify-content-center align-items-center">
-									<div class="col-6">
-										<h5 class="card-title card-name">John</h5>
-										ID: 457884
-										Senior Software Engineer
-									</div>
-									<div class="col-6">
-										<p class="card-text">
-											sakjlkjsfkjhdsfusfj@gamil.com
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
+					{% endfor %}
+					{% endif %}
 				</div>
 			</div>
 		</ul>

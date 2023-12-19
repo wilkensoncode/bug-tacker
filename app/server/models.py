@@ -41,7 +41,7 @@ class Developer(db.Model):
     salary = db.Column(db.String(250))
     office = db.Column(db.String(100))
     position = db.Column(db.String(100))
-    start_date = db.Column(db.String(100))
+    start_date = db.Column(db.DateTime(timezone=True), default=func.now())
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 

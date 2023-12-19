@@ -1,13 +1,15 @@
 import re
 
 from flask import render_template, Blueprint, request, flash
-
+from datetime import datetime, timedelta
 admin_view = Blueprint('admin_view', __name__)
 
 
 def validate_credential(email=None, password=None):
-    validate_email = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  # pattern validate email
-    validate_psswrd = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"  # validate pass
+    # pattern validate email
+    validate_email = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    # validate pass
+    validate_psswrd = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
     if email and not password:
         return re.match(validate_email, email)
     elif password and not email:
@@ -31,7 +33,8 @@ def charts():
 
 @admin_view.route('/admin/dev', methods=["GET", "POST"])
 def add_dev():
-    print(request.form)
+    current_date = datetime.now()
+    new_date = current_date + timedelta(weeks=1)
     if request.method == "POST":
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
@@ -40,6 +43,7 @@ def add_dev():
         office = request.form.get("office")
         position = request.form.get("position")
         start_date = request.form.get("start_date")
+
         if first_name == "":
             flash("Firstname cannot be empty", category="error")
         elif last_name == "":
@@ -55,9 +59,22 @@ def add_dev():
         elif start_date == "":
             flash("Invalid start date", category="Error")
         else:
+            from .models import Developer
+            from app import db
+            new_dev = Developer(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                salary=salary,
+                office=office,
+                position=position,
+                start_date=start_date)
+
+            db.session.add(new_dev)
+            db.session.commit()
             flash("Developer added successfully", category="success")
 
-    return render_template('adm_add_dev.html')
+    return render_template('adm_add_dev.html', default_date=new_date.strftime("%Y-%m-%d"))
 
 
 @admin_view.route('/admin/reset', methods=["GET", "POST"])

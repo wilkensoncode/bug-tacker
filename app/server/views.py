@@ -23,7 +23,9 @@ def issues():
 
 @view.route('/team')
 def team():
-    return render_template('team.html')
+    from .models import Developer
+    developers = Developer.query.all()
+    return render_template('team.html', developers=developers)
 
 
 @view.route('/report', methods=["GET", "POST"])
