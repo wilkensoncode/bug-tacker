@@ -1,0 +1,11 @@
+venv/
+**/venv
+**/.idea 
+config/secret.env
+config/zo.env
+**/.env
+**/config
+/config
+**/__pycache__
+.DS_Store
+/.DS_Store
