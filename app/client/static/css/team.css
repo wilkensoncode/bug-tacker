@@ -1,0 +1,13 @@
+:root {
+    --white: hsl(0, 0%, 100%);
+    --blues : hsl(209, 100%, 56%);
+}
+
+.card-bg {
+    color: var(--white);
+    background-color: transparent !important;
+}
+
+.card-name {
+    color: var(--blues);
+}
