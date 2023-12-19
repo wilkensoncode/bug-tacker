@@ -1,0 +1,93 @@
+:root {
+    --hover:hsl(160, 100%, 50%);
+    --dark: hsl(233, 18%, 19%);
+    --green: hsl(160, 100%, 50%);
+    --border-btm: 1px hsl(0, 0%, 100%) solid;
+    --hero: hsl(218, 39%, 35%);
+    --footer-text: hsl(0, 0%, 100%);
+    --footer: hsl(199, 74%, 59%);
+    --footer-bg: hsl(223, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --about-color: hsl(199, 74%, 59%);
+    --sub-headers: hsl(218, 39%, 35%);
+    --blue: hsl(181, 88%, 67%) ;
+    --action-color: hsl(199, 74%, 59%); /* get started btn*/
+}
+
+.issue-wrapper {
+    padding-top: 15px;
+    border: 1px var(--dark) solid;
+}
+/* ---------------------------------------- */
+.btn-issue-doc{
+    border: 1px var(--blue) solid;
+    width: 85px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 1px .5px 1px .5px var(--blue);
+}
+
+.btn-issue-doc:hover{
+    top: 0;
+    left: 0; 
+    box-sizing: border-box;  
+    animation: ease-in 1s; 
+    color: var(--white);
+    box-shadow: 0 0 5px 1px  var(--blue);
+
+}
+
+.btn-issue-desc{
+    border: 1px var(--blue) solid;
+    width: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 1px .5px 1px .5px var(--blue);
+}
+
+.btn-issue-desc:hover{
+    top: 0;
+    left: 0; 
+    box-sizing: border-box;  
+    animation: ease-in 1s; 
+    color: var(--white);
+    box-shadow: 0 0 5px 1px  var(--blue);
+}
+
+/* -------------------------------- */
+.green {
+    color: var(--dark);
+}
+
+.issue-status-bg {
+    background: var(--dark);
+    border:none;
+}
+
+.modal { 
+    /* modal text */
+    color: var(--dark);
+}
+
+.issue-nav-color {
+   color:var(--blue);
+}
+
+.col select option {
+    color : red;
+    background: red;
+}
+
+.desc-color {
+    color: var(--blue);
+}
+
+.btn-status {
+    color: var(--blue) !important;
+    border-bottom: solid 2px var(--blue) !important;
+}
+
+.btn-status:hover {
+    color: var(--blue) !important;
+    border-bottom: solid 2px var(--action-color) !important;
+}

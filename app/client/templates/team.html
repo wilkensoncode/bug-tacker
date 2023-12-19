@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Team {% endblock %}
+
+
+{% block section %}
+<div class="pt-4">
+	<div class="container">
+		<div class="sign pt-5" align="center">
+			<h3>Team</h3>
+		</div>
+		<ul>
+			<div class="justify-content-center p-2">
+				<div class="row p-4">
+					{% if developers %}
+					{% for developer in developers %}
+					<div class="col mb-2">
+						<div class="card card-bg  shadow " style="width: 18rem;">
+							<div class="card-body bg-none ">
+								<div class="row justify-content-center align-items-center">
+									<div class="col">
+										<h5 class="card-title card-name">{{developer.first_name}}</h5>
+										<br>
+										{{developer.position}}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<p class="card-text">
+											{{developer.email}}
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		</ul>
+	</div>
+</div>
+{% endblock %}
