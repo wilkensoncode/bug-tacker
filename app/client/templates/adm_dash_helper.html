@@ -1,0 +1,137 @@
+<div class="card mb-4">
+    <div class="card-header dash-stat text-white">
+        <i class="fas fa-table me-1"></i>
+        Issues' Stats
+    </div>
+    <div class="card-body">
+        <table id="datatablesIssue">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Bugs/Issues</th>
+                    <th>Reporters</th>
+                    <th>Description</th>
+                    <th>Date&Time reported</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if reports %}
+                {% for report in reports %}
+                <tr>
+                    <td>{{report.id}}</td>
+                    <td>{{report.issue_name}}</td>
+                    <td>{{report.email}}</td>
+                    <td>{{report.description}}</td>
+                    <td>{{report.date_created}}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>125</td>
+                    <td>Button</td>
+                    <td>Name reporter</td>
+                    <td>Description</td>
+                    <td>mm/dd/yy</td>
+                </tr>
+                <tr>
+                    <td>125</td>
+                    <td>Button</td>
+                    <td>Name reporter</td>
+                    <td>Description</td>
+                    <td>mm/dd/yy</td>
+                </tr>
+                <tr>
+                    <td>125</td>
+                    <td>Button</td>
+                    <td>Name reporter</td>
+                    <td>Description</td>
+                    <td>mm/dd/yy</td>
+                </tr>
+                <tr>
+                    <td>125</td>
+                    <td>Button</td>
+                    <td>Name reporter</td>
+                    <td>Description</td>
+                    <td>mm/dd/yy</td>
+                </tr>
+                <tr>
+                    <td>125</td>
+                    <td>Button</td>
+                    <td>Name reporter</td>
+                    <td>mm/dd/yy</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header dash-stat text-white">
+        <i class="fas fa-table me-1"></i>
+        Developer's Stats
+    </div>
+    <div class="card-body">
+        <table id="datatablesDev">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Start date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if developers %}
+                {% for developer in developers %}
+                <tr>
+                    <td>{{developer.id}}</td>
+                    <td>{{developer.first_name}} {{developer.last_name}}</td>
+                    <td>{{developer.email}}</td>
+                    <td>{{developer.position}}</td>
+                    <td>{{developer.office}}</td>
+                    <td>{{developer.start_date}}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>4578</td>
+                    <td>example@gmail.com</td>
+                    <td>Sonya Frost</td>
+                    <td>Software Engineer</td>
+                    <td>Edinburgh</td>
+                    <td>2008/12/13</td>
+                </tr>
+                <tr>
+                    <td>4578</td>
+                    <td>example@gmail.com</td>
+                    <td>Jena Gaines</td>
+                    <td>Office Manager</td>
+                    <td>London</td>
+                    <td>2008/12/19</td>
+                </tr>
+                <tr>
+                    <td>4578</td>
+                    <td>example@gmail.com</td>
+                    <td>Quinn Flynn</td>
+                    <td>Support Lead</td>
+                    <td>Edinburgh</td>
+                    <td>2013/03/03</td>
+                </tr>
+                <tr>
+                    <td>4578</td>
+                    <td>example@gmail.com</td>
+                    <td>Charde Marshall</td>
+                    <td>Regional Director</td>
+                    <td>San Francisco</td>
+                    <td>2008/10/16</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+</div>

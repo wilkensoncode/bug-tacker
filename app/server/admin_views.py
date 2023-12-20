@@ -19,12 +19,19 @@ def validate_credential(email=None, password=None):
 
 @admin_view.route('/admin')
 def admin():
+
     return render_template('adm_dash.html')
 
 
 @admin_view.route('/admin/dashboard')
 def dashboard():
-    return render_template('adm_dash.html')
+    from .models import Report, Developer
+    reports = Report.query.all()
+    developers = Developer.query.all()
+    count_reports = len(reports)
+    count_developers = len(developers)
+    print(count_reports, count_developers)
+    return render_template('adm_dash.html', reports=reports, developers=developers, count_reports=count_reports, count_dev=count_developers)
 
 
 @admin_view.route('/admin/charts')
@@ -192,11 +199,19 @@ def update_info():
 
 @admin_view.route('/admin/task', methods=["GET", "POST"])
 def task():
-    print(request.form)
+    from .models import Report, Developer, Update
+    from .models import AssignTask
+    from app import db
+
+    reports = Report.query.all()
+    developers = Developer.query.all()
+
     if request.method == "POST":
+
         bug_id = request.form.get('bug_id')
         dev_id = request.form.get('dev_id')
         priority = request.form.get('priority')
+
         if bug_id == '':
             flash("Bug ID cannot be empty", category="error")
         elif dev_id == '':
@@ -204,6 +219,25 @@ def task():
         elif not priority:
             flash("Priority cannot be empty", category="error")
         else:
-            flash("Assign Task successfully", category="success")
 
-    return render_template('adm_assign.html')
+            user = Developer.query.filter_by(id=dev_id).first()
+            report = Report.query.filter_by(id=bug_id).first()
+
+            if user and report:
+                assign_task = AssignTask(
+                    issueId=bug_id,
+                    DeveloperId=dev_id)
+
+                update_info = Update(
+                    affected_user_email=user.email,
+                    admin_email=current_user.email,
+                    operation=f"Assign Task issue{bug_id}")
+
+                db.session.add(assign_task)
+                db.session.add(update_info)
+                db.session.commit()
+                flash("Task assigned successfully", category="success")
+            else:
+                flash("Invalid IDs", category="error")
+
+    return render_template('adm_assign.html', reports=reports, developers=developers)

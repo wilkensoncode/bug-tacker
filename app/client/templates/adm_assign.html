@@ -4,160 +4,37 @@
 <!-- Issues / bugs -->
 <div class="container">
 	<h3 class="p-3"> Task</h3>
-	<div class="card mb-4">
-		<div class="card-header dash-stat text-white">
-			<i class="fas fa-table me-1"></i>
-			Issues' Stats
-		</div>
-		<div class="card-body">
-			<table id="datatablesIssue">
-				<thead>
-				<tr>
-					<th>ID</th>
-					<th>Bugs/Issues</th>
 
-					<th>Priorities</th>
-					<th>assign-to</th>
-					<th>Date reported</th>
-				</tr>
-				</thead>
-				<tfoot>
-				<tr>
-					<th>ID</th>
-					<th>Bugs/Issues</th>
-
-					<th>Priorities</th>
-					<th>assign-to</th>
-					<th>Date reported</th>
-				</tr>
-				</tfoot>
-				<tbody>
-
-				<tr>
-					<td>125</td>
-					<td>Button</td>
-
-					<td>Edinburgh</td>
-					<td>John the dev</td>
-					<td>mm/dd/yy</td>
-				</tr>
-
-				<tr>
-					<td>125</td>
-					<td>Button</td>
-
-					<td>Edinburgh</td>
-					<td>John the dev</td>
-					<td>mm/dd/yy</td>
-				</tr>
-				<tr>
-					<td>125</td>
-					<td>Button</td>
-
-					<td>Edinburgh</td>
-					<td>John the dev</td>
-					<td>mm/dd/yy</td>
-				</tr>
-				<tr>
-					<td>125</td>
-					<td>Button</td>
-
-					<td>Edinburgh</td>
-					<td>John the dev</td>
-					<td>mm/dd/yy</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
 </div>
-<!-- developers-->
+
 
 <div class="container ">
-	<div class="card mb-4">
-		<div class="card-header dash-stat text-white">
-			<i class="fas fa-table me-1"></i>
-			Developer's Stats
-		</div>
-		<div class="card-body">
-			<table id="datatablesDev">
-				<thead>
-				<tr>
-					<th>ID</th>
-					<th>Email</th>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Start date</th>
-					<th>Salary</th>
-				</tr>
-				</thead>
-				<tfoot>
-				<tr>
-					<th>ID</th>
-					<th>Email</th>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Start date</th>
-					<th>Salary</th>
-				</tr>
-				</tfoot>
-				<tbody>
+	<ul>
+		<form action="{{ url_for('admin_view.task') }}" method="POST">
+			<div class="row ">
+				<div class="col update-input-bg">
+					<input type="text" class="form-control" placeholder="Bug/Issue ID" name="bug_id">
+				</div>
 
-				<tr>
-					<td>4578</td>
-					<td>example@gmail.com</td>
-					<td>Colleen Hurst</td>
-					<td>Javascript Developer</td>
-					<td>San Francisco</td>
-					<td>2009/09/15</td>
-					<td>$205,500</td>
-				</tr>
-				<tr>
-					<td>4578</td>
-					<td>example@gmail.com</td>
-					<td>Sonya Frost</td>
-					<td>Software Engineer</td>
-					<td>Edinburgh</td>
-					<td>2008/12/13</td>
-					<td>$103,600</td>
-				</tr>
+				<div class="col update-input-bg">
+					<input type="text" class="form-control" placeholder="developer ID" name="dev_id">
+				</div>
 
-
-				</tbody>
-			</table>
-		</div>
-	</div>
-<!-- assign task -->
-
-	<form action="{{ url_for('admin_view.task') }}" method="POST">
-		<div class="row ">
-			<div class="input-group mb-3 col">
-				<span class="input-group-text" id="Bug ID">Bug/Issue ID</span>
-				<input type="text" class="form-control" placeholder="Bug/Issue ID" name="bug_id" >
+				<div class="pt-2 pb-2 col update-input-bg">
+					<select class=" col border-0" name="priority">
+						<option disabled selected>priority</option>
+						<option value="high" class="form-control">High</option>
+						<option value="low" class="form-control">Medium</option>
+						<option value="low" class="form-control">Low</option>
+					</select>
+				</div>
+				<div class="col update-input-bg">
+					<button class="btn btn-dark text-white ">Assign</button>
+				</div>
 			</div>
-
-			<div class="input-group mb-3 col">
-				<span class="input-group-text" id="basic-addon1">Dev ID</span>
-				<input type="text" class="form-control" placeholder="developer ID"  name="dev_id">
-			</div>
-
-			<div class="input-group mb-3 col">
-				<span class="input-group-text" id="priority">Priority</span>
-				<select class=" col border-0" name="priority">
-					<option disabled selected>priority</option>
-					<option value="high"  class="form-control">High</option>
-					<option value="low"  class="form-control">Medium</option>
-					<option value="low" class="form-control">Low</option>
-				</select>
-			</div>
-		</div>
-		<div class="mt-2 mb-5 d-flex justify-content-end">
-			<button class="btn btn-dark text-white ">Assign</button>
-		</div>
-	</form>
-
+		</form>
+	</ul>
 </div>
-
+<hr>
+{% include 'adm_dash_helper.html' %}
 {% endblock %}
