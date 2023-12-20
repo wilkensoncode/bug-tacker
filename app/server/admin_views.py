@@ -1,6 +1,7 @@
 import re
-
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, Blueprint, request, flash
+from flask_login import current_user, login_required
 from datetime import datetime, timedelta
 admin_view = Blueprint('admin_view', __name__)
 
@@ -77,20 +78,116 @@ def add_dev():
     return render_template('adm_add_dev.html', default_date=new_date.strftime("%Y-%m-%d"))
 
 
-@admin_view.route('/admin/reset', methods=["GET", "POST"])
-def reset_pass():
-    print(request.form)
+@admin_view.route('/admin/user-manage', methods=["GET", "POST"])
+def update_info():
     if request.method == "POST":
-        email = request.form.get("email")
-        password = request.form.get("password")
-        if not validate_credential(email):
-            flash("Invalid email", category="error")
-        if not validate_credential(None, password):
-            flash("Invalid password", category="error")
-        else:
-            flash("Password updated successfully")
+        from .models import User, Update
+        from app import db
 
-    return render_template('adm_password.html')
+        current_email = request.form.get("email")
+        new_password = request.form.get("update_password")
+        new_email = request.form.get("new_email")
+
+        admin_password = request.form.get("admin_password")
+        is_admin = request.form.get("is_admin")
+        not_admin = request.form.get("not_admin")
+        remove_user = request.form.get("remove_user")
+
+        if current_user.admin == True:
+            print("admin", current_user.admin)
+            user = User.query.filter_by(email=current_email).first()
+            if current_email and new_password and admin_password:
+                if user:
+                    if check_password_hash(current_user.password, admin_password):
+                        user.password = generate_password_hash(
+                            new_password, method='sha256')
+
+                        update_info = Update(
+                            affected_user_email=current_email,
+                            admin_email=current_user.email,
+                            operation="Update Password")
+
+                        db.session.add(update_info)
+                        db.session.commit()
+                        flash("Password updated successfully",
+                              category="success")
+                    else:
+                        flash("Invalid credentials", category="error")
+                else:
+                    flash("User does not exist", category="error")
+
+            elif current_email and new_email and admin_password:
+                if user:
+                    if check_password_hash(current_user.password, admin_password):
+                        user.email = new_email
+
+                        update_info = Update(
+                            affected_user_email=current_email,
+                            admin_email=current_user.email,
+                            operation="Update Email")
+
+                        db.session.add(update_info)
+                        db.session.commit()
+                        flash("Email updated successfully", category="success")
+                    else:
+                        flash("Invalid credentials", category="error")
+                else:
+                    flash("User does not exist", category="error")
+
+            elif current_email and is_admin and admin_password:
+                if user:
+                    if check_password_hash(current_user.password, admin_password):
+                        user.admin = True
+                        update_info = Update(
+                            affected_user_email=current_email,
+                            admin_email=current_user.email,
+                            operation="Make user admin")
+
+                        db.session.add(update_info)
+                        db.session.commit()
+
+                        flash("User is now an admin", category="success")
+                    else:
+                        flash("Invalid credentials", category="error")
+                else:
+                    flash("User does not exist", category="error")
+
+            elif current_email and admin_password and not_admin and not is_admin and not new_email and not new_password:
+                if user:
+                    if check_password_hash(current_user.password, admin_password):
+                        user.admin = False
+                        update_info = Update(
+                            affected_user_email=current_email,
+                            admin_email=current_user.email,
+                            operation="Remove admin privilege")
+
+                        db.session.add(update_info)
+                        db.session.commit()
+                        flash("User is no longer an admin", category="success")
+                    else:
+                        flash("Invalid credentials", category="error")
+                else:
+                    flash("User does not exist", category="error")
+
+            elif current_email and remove_user and admin_password and not not_admin and not is_admin and not new_email and not new_password:
+                if user:
+                    if check_password_hash(current_user.password, admin_password):
+                        db.session.delete(user)
+
+                        update_info = Update(
+                            affected_user_email=current_email,
+                            admin_email=current_user.email,
+                            operation="Remove user")
+
+                        db.session.add(update_info)
+                        db.session.commit()
+                        flash("User removed successfully", category="success")
+                    else:
+                        flash("Invalid credentials", category="error")
+                else:
+                    flash("User does not exist", category="error")
+
+    return render_template('user_manage.html')
 
 
 @admin_view.route('/admin/task', methods=["GET", "POST"])

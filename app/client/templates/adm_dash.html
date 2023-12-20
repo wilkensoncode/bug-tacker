@@ -1,55 +1,44 @@
-
 {% extends 'adm_base.html' %}
 {% block title %} Dashboard {% endblock %}
 {% block main %}
-    <div class="container-fluid px-4">
-        <h2 class="mt-4 mb-4">Dashboard</h2>
+<div class="container-fluid px-4">
+    <h2 class="mt-4 mb-4">Dashboard</h2>
 
-        <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <div class="card dash-card text-white mb-4">
-                    <div class="card-body">Developers 🖱️</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                       <small><span>99</span> Front-end & <span>99</span> Back-end</small>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card dash-card text-white mb-4">
+                <div class="card-body">Developers 🖱️</div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card dash-card text-white mb-4">
-                    <div class="card-body">Reports 📄</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <small>10 Reported Bugs</small>
-                    </div>
-                </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card dash-card text-white mb-4">
+                <div class="card-body">Reports 📄</div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card dash-card text-white mb-4">
-                    <div class="card-body">Fixed ✅</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <small><span>9</span> Issues Fixed</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card dash-card text-white mb-4">
-                    <div class="card-body">Bugs ❌</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <small><span>1</span> Active Bugs</small>
-                    </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card dash-card text-white mb-4">
+                <div class="card-body">
+                    Fixed ✅
                 </div>
             </div>
         </div>
-
-<!--        Issues-->
-
-        <div class="card mb-4">
-            <div class="card-header dash-stat text-white">
-                <i class="fas fa-table me-1"></i>
-                Issues' Stats
+        <div class="col-xl-3 col-md-6">
+            <div class="card dash-card text-white mb-4">
+                <div class="card-body">Bugs ❌</div>
             </div>
-            <div class="card-body">
-                <table id="datatablesIssue">
-                    <thead>
+        </div>
+    </div>
+
+    <!--        Issues-->
+
+    <div class="card mb-4">
+        <div class="card-header dash-stat text-white">
+            <i class="fas fa-table me-1"></i>
+            Issues' Stats
+        </div>
+        <div class="card-body">
+            <table id="datatablesIssue">
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>Bugs/Issues</th>
@@ -59,8 +48,8 @@
                         <th>assign-to</th>
                         <th>Date reported</th>
                     </tr>
-                    </thead>
-                    <tfoot>
+                </thead>
+                <tfoot>
                     <tr>
                         <th>ID</th>
                         <th>Bugs/Issues</th>
@@ -70,8 +59,8 @@
                         <th>assign-to</th>
                         <th>Date reported</th>
                     </tr>
-                    </tfoot>
-                    <tbody>
+                </tfoot>
+                <tbody>
 
                     <tr>
                         <td>125</td>
@@ -127,21 +116,21 @@
                         <td>John the dev</td>
                         <td>mm/dd/yy</td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
+    </div>
 
-<!--        Employees-->
+    <!--        Employees-->
 
-        <div class="card mb-4">
-            <div class="card-header dash-stat text-white">
-                <i class="fas fa-table me-1"></i>
-               Developer's Stats
-            </div>
-            <div class="card-body">
-                <table id="datatablesDev">
-                    <thead>
+    <div class="card mb-4">
+        <div class="card-header dash-stat text-white">
+            <i class="fas fa-table me-1"></i>
+            Developer's Stats
+        </div>
+        <div class="card-body">
+            <table id="datatablesDev">
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>Email</th>
@@ -151,8 +140,8 @@
                         <th>Start date</th>
                         <th>Salary</th>
                     </tr>
-                    </thead>
-                    <tfoot>
+                </thead>
+                <tfoot>
                     <tr>
                         <th>ID</th>
                         <th>Email</th>
@@ -162,8 +151,8 @@
                         <th>Start date</th>
                         <th>Salary</th>
                     </tr>
-                    </tfoot>
-                    <tbody>
+                </tfoot>
+                <tbody>
 
                     <tr>
                         <td>4578</td>
@@ -238,12 +227,10 @@
                         <td>$198,500</td>
                     </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
 {% endblock %}
-
-

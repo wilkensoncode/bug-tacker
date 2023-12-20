@@ -55,7 +55,7 @@
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/logout">Logout</a>
 						</li>
-						{% elif not current_user.is_authenticated %}
+						{% else %}
 
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/login">Login</a>
@@ -64,11 +64,11 @@
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/report">Report as guess</a>
 						</li>
-						{% elif current_user.admin == true %}
+						{% endif %}
+						{% if current_user.admin == true %}
 						<li class="nav-item">
-							<a class="nav-link display-1" href="/admin">Dashboard</a>
+							<a class="nav-link display-1" href="/admin" target="_blank">Dashboard</a>
 						</li>
-
 						{% endif %}
 					</ul>
 				</div>
