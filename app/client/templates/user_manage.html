@@ -1,0 +1,27 @@
+{% extends 'adm_base.html' %}
+{% block title %} update {% endblock %}
+{% block main %}
+<div class="container">
+    <div class="h2 text-muted">update your team information.</div>
+    <div class="mb-4">
+        <a class="small" href="/admin">Return to
+            dash
+        </a>
+    </div>
+</div>
+<div class="container">
+    {% include 'reset_pass_helper.html' %}
+    {% include 'update_email_helper.html' %}
+    {% include 'privilege.html' %}
+    {% include 'remove_privilege.html' %}
+    {% include 'remove_user.html' %}
+
+
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='admin/js/script.js')}}"></script>
+{% endblock %}

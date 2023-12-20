@@ -1,0 +1,22 @@
+<ul style="background-color: hsla(120, 100%, 25%, 5%);">
+    <div class="row  mb-4">
+        <form class="row d-flex align-items-center" action="{{url_for('admin_view.update_info')}}" method="POSt">
+            <div class="col">
+                <input name="email" class="form-control" id="email" type="email" placeholder="team email" required />
+            </div>
+            <div class="col">
+                <label for="admin_checkbox">Cannot be undone:</label>
+                <input name="remove_user" id="admin_checkbox" type="checkbox" required />
+            </div>
+            <div class="col">
+                <input name="admin_password" class="form-control" id="password" type="password"
+                    placeholder="admin password" required />
+            </div>
+
+            <div class="col">
+                <button class="btn btn-sm btn-dark text-white" type="submit">Remove
+                    user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            </div>
+        </form>
+    </div>
+</ul>

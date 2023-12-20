@@ -8,9 +8,8 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
     email = db.Column(db.String(250))
-    username = db.Column(db.String(250))
     admin = db.Column(db.Boolean, default=False)
-    password1 = db.Column(db.String(250))
+    password = db.Column(db.String(250))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 
@@ -50,5 +49,14 @@ class AssignTask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     issueId = db.Column(db.Integer)
     DeveloperId = db.Column(db.Integer)
+    date_created = db.Column(db.DateTime(timezone=True),
+                             default=func.now())
+
+
+class Update(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    affected_user_email = db.Column(db.String(250))
+    admin_email = db.Column(db.String(250))
+    operation = db.Column(db.String(250))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())

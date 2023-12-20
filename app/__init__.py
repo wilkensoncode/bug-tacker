@@ -1,6 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
-
+from werkzeug.security import generate_password_hash
 from .server.views import view
 from .server.auths import auth
 
@@ -60,6 +60,42 @@ def create_app():
 
     with app.app_context():
         db.create_all()
+
+        USER_FIRSTNAME = os.getenv('USER_FIRSTNAME')
+        USER_LASTNAME = os.getenv('USER_LASTNAME')
+        USER_EMAIL = os.getenv('USER_EMAIL')
+        USER_PASSWORD = os.getenv('USER_PASSWORD')
+
+        ADMIN_FIRSTNAME = os.getenv('ADMIN_FIRSTNAME')
+        ADMIN_LASTNAME = os.getenv('ADMIN_LASTNAME')
+        ADMIN_EMAIL = os.getenv('ADMIN_EMAIL')
+        ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
+
+        if not models.User.query.filter_by(email=ADMIN_EMAIL).first():
+
+            admin = models.User(
+                first_name=ADMIN_FIRSTNAME,
+                last_name=ADMIN_LASTNAME,
+                email=ADMIN_EMAIL,
+                admin=True,
+                password=generate_password_hash(
+                    ADMIN_PASSWORD, method='sha256'),
+            )
+            db.session.add(admin)
+
+        if not models.User.query.filter_by(email=USER_EMAIL).first():
+            user = models.User(
+                first_name=USER_FIRSTNAME,
+                last_name=USER_LASTNAME,
+                email=USER_EMAIL,
+                admin=False,
+                password=generate_password_hash(
+                    USER_PASSWORD, method='sha256'),
+
+            )
+            db.session.add(user)
+
+        db.session.commit()
 
     return app
 

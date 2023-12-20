@@ -33,7 +33,7 @@ def login():
             user = User.query.filter_by(email=email).first()
 
             if user:
-                if check_password_hash(user.password1, password):
+                if check_password_hash(user.password, password):
                     flash("Logged in successfully!", category="success")
                     login_user(user, remember=True)
                     return redirect(url_for('view.issues'))
@@ -69,7 +69,7 @@ def register():
             from app import db
 
             new_user = User(first_name=first_name, last_name=last_name, email=email,
-                            password1=generate_password_hash(
+                            password=generate_password_hash(
                                 password1, method='sha256')
                             )
 
