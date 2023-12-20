@@ -1,14 +1,14 @@
-<ul style="background-color: hsla(120, 100%, 25%, 5%);">
+<ul>
     <div class="row  mb-4">
         <form class="row d-flex align-items-center" action="{{url_for('admin_view.update_info')}}" method="POSt">
-            <div class="col">
+            <div class="col update-input-bg">
                 <input name="email" class="form-control" id="email" type="email" placeholder="team email" required />
             </div>
-            <div class="col">
+            <div class="col update-input-bg">
                 <label for="admin_checkbox">Make admin:</label>
                 <input name="is_admin" id="admin_checkbox" type="checkbox" required />
             </div>
-            <div class="col">
+            <div class="col update-input-bg">
                 <input name="admin_password" class="form-control" id="password" type="password"
                     placeholder="admin password" required />
             </div>
