@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/form.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/issue.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/team.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/doc.css')}}">
 
 	<title>{% block title %} page {% endblock %}</title>
 
@@ -42,7 +43,7 @@
 						{% if current_user.is_authenticated %}
 
 						<li class="nav-item">
-							<a class="nav-link display-1" aria-current="page" href="/issues">Dash</a>
+							<a class="nav-link display-1" aria-current="page" href="/issues">Issues</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link display-1 " href="/team">Team</a>
@@ -50,6 +51,11 @@
 
 						<li class="nav-item">
 							<a class="nav-link display-1" href="/report">Report</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link display-1" aria-current="page" href="/tasks">My_tasks
+								<span class="badge text-bg-secondary"></span></a>
 						</li>
 
 						<li class="nav-item">
@@ -121,6 +127,7 @@
 	<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
 	<script src="{{url_for('static', filename='js/main.js')}}"></script>
 	<script src="{{url_for('static', filename='js/flash.js')}}"></script>
+	<script src="{{url_for('static', filename='js/doc.js')}}"></script>
 
 </body>
 

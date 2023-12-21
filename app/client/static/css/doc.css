@@ -1,0 +1,40 @@
+:root {
+    --hover:#00FFAB;
+    --dark: #282A3A;
+    --green: #00FFAB;
+    --border-btm: 1px #fff solid;
+    --hero: #37517e;
+    --footer-text: #fff;
+    --footer: #47b2e4;
+    --footer-bg: #f3f5fa;
+    --white: #fff;
+    --about-color: #47b2e4;
+    --sub-headers: #37517e;
+    --blue: #61F2F5 ;
+    --action-color: #47b2e4; /* get started btn*/
+}
+
+#text-area {
+    
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.doc-button {
+    margin-right: 5px;
+    border: 1px solid var(--green);
+    /* background-color: var(--blue);  */
+    padding: 1px;
+}
+.doc-button:hover {
+    background-color: var(--hover);
+    color: var(--dark);
+}
+
+.doc-button:active,
+.doc-button:focus {
+    background-color: var(--hover);
+}
+ 

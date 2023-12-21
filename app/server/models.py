@@ -47,8 +47,8 @@ class Developer(db.Model):
 
 class AssignTask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    issueId = db.Column(db.Integer)
-    DeveloperId = db.Column(db.Integer)
+    issueId = db.Column(db.Integer, unique=True)
+    DeveloperId = db.Column(db.Integer, db.ForeignKey('developer.id'))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 
