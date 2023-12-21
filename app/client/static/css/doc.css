@@ -24,18 +24,17 @@
 
 .doc-button {
     margin-right: 5px;
-    border: 1px solid #ccc;
-    background-color: var(--blue);
-    border: none;
+    border: 1px solid var(--green);
+    /* background-color: var(--blue);  */
     padding: 1px;
 }
 .doc-button:hover {
     background-color: var(--hover);
     color: var(--dark);
 }
-.doc-button:focus,
-.doc-button:active {
+
+.doc-button:active,
+.doc-button:focus {
     background-color: var(--hover);
-    color: var(--dark);
 }
  

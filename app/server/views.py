@@ -11,14 +11,9 @@ def home():
 
 @view.route('/issues', methods=["GET", "POST"])
 def issues():
-    if request.method == "POST":
-        status = request.form.get('status')
-        if not status:
-            flash("Status cannot be empty choose an option", category='error')
-        else:
-            flash("Status updated successfully", category="success")
-
-    return render_template('issues.html')
+    from .models import Report
+    descriptions = Report.query.all()
+    return render_template('issues.html', descriptions=descriptions, count=len(descriptions))
 
 
 @view.route('/team')
@@ -62,6 +57,27 @@ def subscribe():
     return redirect(url_for('view.home'))
 
 
-@view.route('/document')
+@view.route('/document', methods=["GET", "POST"])
 def document():
+    if request.method == "POST":
+        print("document")
+        return redirect(url_for('view.tasks'))
+
     return render_template('doc_area.html')
+
+
+@view.route('/tasks', methods=["GET", "POST"])
+def tasks():
+    from .models import Report, AssignTask
+
+    descriptions = Report.query.join(AssignTask, AssignTask.issueId == Report.id)\
+        .filter(AssignTask.DeveloperId == current_user.id).all()
+    print(current_user.id)
+    if request.method == "POST":
+        status = request.form.get('status')
+        if not status:
+            flash("Status cannot be empty choose an option", category='error')
+        else:
+            flash("Status updated successfully", category="success")
+
+    return render_template('task.html', descriptions=descriptions, count=len(descriptions))
