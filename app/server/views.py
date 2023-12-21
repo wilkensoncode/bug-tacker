@@ -60,3 +60,8 @@ def report():
 def subscribe():
     print("subscribe")
     return redirect(url_for('view.home'))
+
+
+@view.route('/document')
+def document():
+    return render_template('doc_area.html')

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}document{% endblock%}
+{% block section %}
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="desc-text">
+            <div class="description">
+                drcript of issue
+            </div>
+
+            <div>
+                <button class="doc-button" onclick="formatText('bold')">Bold</button>
+                <button class="doc-button" onclick="formatText('italic')">Italic</button>
+                <button class="doc-button" onclick="formatText('underline')">Underline</button>
+                <button class="doc-button" onclick="formatText('strikethrough')">Strikethrough</button>
+                <button class="doc-button" onclick="formatText('insertunorderedlist')">Bullet Points</button>
+                <button class="doc-button" onclick="formatText('insertorderedlist')">Numbered List</button>
+                <button class="doc-button" onclick="insertLink()">Insert Link</button>
+            </div>
+            <form action="">
+                <div contenteditable="true" id="text-area"></div>
+                <div class="mt-2 d-flex justify-content-end">
+                    <button class="btn btn-success btn-sm ">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}
