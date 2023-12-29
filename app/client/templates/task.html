@@ -6,7 +6,7 @@
 
 <div class="pb-5">
     <div class="container">
-        {% if current_user.is_authenticated and descriptions%}
+        {% if current_user.is_authenticated and issues %}
         <div class="sign pt-2 pb-5 position-relative" align="center">
             <h3>
                 {% if count > 1 %}
@@ -32,7 +32,7 @@
 
         <div class="mb-2 shadow">
             <div>
-                {% for description in descriptions %}
+                {% for issue in issues %}
                 {% include 'issue_helper.html' %}
                 {% endfor %}
             </div>

@@ -1,6 +1,6 @@
 
 from flask import Blueprint, render_template, url_for, redirect, request, flash
-from flask_login import current_user
+from flask_login import current_user, login_required
 view = Blueprint('view', __name__)
 
 
@@ -18,17 +18,19 @@ def issues():
 
 @view.route('/team')
 def team():
-    from .models import Developer
-    developers = Developer.query.all()
+    from app import db
+    from .models import Developer, User
+    developers = db.session.query(Developer, User).join(
+        User, User.email == Developer.email).all()
+    for developer, user in developers:
+        print(developer, user)
+
     return render_template('team.html', developers=developers)
 
 
 @view.route('/report', methods=["GET", "POST"])
+@login_required
 def report():
-    not_guess = ""
-    if current_user.is_authenticated:
-        not_guess = current_user.email
-
     if request.method == "POST":
         email = request.form.get("email")
         issue_name = request.form.get("issue")
@@ -48,7 +50,7 @@ def report():
 
             flash("Report submitted successfully", category="success")
 
-    return render_template('report.html', not_guess=not_guess)
+    return render_template('report.html')
 
 
 @view.route('/subscribe')
@@ -68,16 +70,16 @@ def document():
 
 @view.route('/tasks', methods=["GET", "POST"])
 def tasks():
-    from .models import Report, AssignTask
+    from .models import Report, Developer
 
-    descriptions = Report.query.join(AssignTask, AssignTask.issueId == Report.id)\
-        .filter(AssignTask.DeveloperId == current_user.id).all()
-    print(current_user.id)
+    descriptions = Report.query.filter_by(assignedTo=current_user.id).all()
+    print(descriptions)
     if request.method == "POST":
         status = request.form.get('status')
+
         if not status:
             flash("Status cannot be empty choose an option", category='error')
         else:
             flash("Status updated successfully", category="success")
 
-    return render_template('task.html', descriptions=descriptions, count=len(descriptions))
+    return render_template('task.html', issdescriptions=descriptions, count=len(descriptions))
