@@ -54,6 +54,7 @@ def create_app():
     @login_manager.user_loader
     def load_user(id):
         from .server.models import User
+
         return User.query.get(int(id))
 
     from .server import models

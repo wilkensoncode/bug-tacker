@@ -1,6 +1,6 @@
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import render_template, Blueprint, request, flash
+from flask import render_template, Blueprint, request, flash, redirect, url_for
 from flask_login import current_user, login_required
 from datetime import datetime, timedelta
 admin_view = Blueprint('admin_view', __name__)
@@ -19,8 +19,7 @@ def validate_credential(email=None, password=None):
 
 @admin_view.route('/admin')
 def admin():
-
-    return render_template('adm_dash.html')
+    return redirect('/admin/dashboard')
 
 
 @admin_view.route('/admin/dashboard')
@@ -41,12 +40,15 @@ def charts():
 
 @admin_view.route('/admin/dev', methods=["GET", "POST"])
 def add_dev():
+    from .models import User
     current_date = datetime.now()
     new_date = current_date + timedelta(weeks=1)
+    users = User.query.all()
     if request.method == "POST":
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
         email = request.form.get("email")
+        print(email)
         salary = request.form.get("salary")
         office = request.form.get("office")
         position = request.form.get("position")
@@ -67,22 +69,25 @@ def add_dev():
         elif start_date == "":
             flash("Invalid start date", category="Error")
         else:
-            from .models import Developer
+            from .models import Developer, User
             from app import db
-            new_dev = Developer(
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
-                salary=salary,
-                office=office,
-                position=position,
-                start_date=start_date)
+            developer = Developer.query.filter_by(email=email).first()
+            print(User)
+            if not developer:
+                new_dev = Developer(
+                    email=email,
+                    salary=salary,
+                    office=office,
+                    position=position,
+                    start_date=start_date)
 
-            db.session.add(new_dev)
-            db.session.commit()
-            flash("Developer added successfully", category="success")
+                db.session.add(new_dev)
+                db.session.commit()
+                flash("Developer added successfully", category="success")
+            else:
+                flash("Developer already exist", category="error")
 
-    return render_template('adm_add_dev.html', default_date=new_date.strftime("%Y-%m-%d"))
+    return render_template('adm_add_dev.html', default_date=new_date.strftime("%Y-%m-%d"), users=users)
 
 
 @admin_view.route('/admin/user-manage', methods=["GET", "POST"])
@@ -199,8 +204,7 @@ def update_info():
 
 @admin_view.route('/admin/task', methods=["GET", "POST"])
 def task():
-    from .models import Report, Developer, Update
-    from .models import AssignTask
+    from .models import Report, Developer, Update, User, AssignTask
     from app import db
 
     reports = Report.query.all()
@@ -220,20 +224,18 @@ def task():
             flash("Priority cannot be empty", category="error")
         else:
 
-            user = Developer.query.filter_by(id=dev_id).first()
+            dev = Developer.query.filter_by(id=dev_id).first()
             report = Report.query.filter_by(id=bug_id).first()
-
-            if user and report:
-                assign_task = AssignTask(
-                    issueId=bug_id,
-                    DeveloperId=dev_id)
+            # user = User.query.filter_by(email=dev_id.email).first()
+            print(dev.email)
+            if dev and report:
+                report.assignedTo = None
 
                 update_info = Update(
-                    affected_user_email=user.email,
+                    affected_user_email=dev.email,
                     admin_email=current_user.email,
                     operation=f"Assign Task issue{bug_id}")
 
-                db.session.add(assign_task)
                 db.session.add(update_info)
                 db.session.commit()
                 flash("Task assigned successfully", category="success")

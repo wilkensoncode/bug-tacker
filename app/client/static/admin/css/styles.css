@@ -11265,3 +11265,7 @@ body {
 .update-input-bg {
   background-color: hsla(120, 100%, 25%, 5%);
 }
+
+.text-muted-dev{
+  color: hsla(120, 100%, 25%, 5%) !important;
+}

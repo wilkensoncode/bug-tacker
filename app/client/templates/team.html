@@ -4,30 +4,29 @@
 
 
 {% block section %}
-<div class="pt-4">
+<div class="">
 	<div class="container">
-		<div class="sign pt-5" align="center">
+		{% if developers %}
+		<div class="sign" align="center">
 			<h3>Team</h3>
 		</div>
 		<ul>
 			<div class="justify-content-center p-2">
 				<div class="row p-4">
-					{% if developers %}
-					{% for developer in developers %}
+					{% for developer, user in developers %}
 					<div class="col mb-2">
 						<div class="card card-bg  shadow " style="width: 18rem;">
 							<div class="card-body bg-none ">
 								<div class="row justify-content-center align-items-center">
 									<div class="col">
-										<h5 class="card-title card-name">{{developer.first_name}}</h5>
-										<br>
+										<span class="sign">{{user.first_name}} {{user.last_name}}</span>
 										{{developer.position}}
 									</div>
 								</div>
 								<div class="row">
 									<div class="col">
 										<p class="card-text">
-											{{developer.email}}
+											<a href="mailto:{{developer.email}}">{{developer.email}}</a>
 										</p>
 									</div>
 								</div>
@@ -36,6 +35,34 @@
 						</div>
 					</div>
 					{% endfor %}
+					{% else %}
+					<div class="sign" align="center">
+						<h3>No Team</h3>
+					</div>
+					<div class="row">
+						{% for _ in range(4) %}
+						<div class="col mb-2">
+							<div class="card card-bg  shadow " style="width: 18rem;">
+								<div class="card-body bg-none ">
+									<div class="row justify-content-center align-items-center">
+										<div class="col">
+											<span class="sign">{{"firstname"}} {{ "lastname" }}</span>
+											{{"Software Developer"}}
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<p class="card-text">
+												<a href="">{{"developer@email.com"}}</a>
+											</p>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
 					{% endif %}
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 <div class="card mb-4">
+    {% if reports %}
     <div class="card-header dash-stat text-white">
         <i class="fas fa-table me-1"></i>
         Issues' Stats
@@ -16,7 +17,6 @@
             </thead>
 
             <tbody>
-                {% if reports %}
                 {% for report in reports %}
                 <tr>
                     <td>{{report.id}}</td>
@@ -61,18 +61,25 @@
                     <td>mm/dd/yy</td>
                 </tr>
                 {% endfor %}
-                {% endif %}
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="card-header dash-stat text-white">
+        <i class="fas fa-table me-1"></i>
+        No issues
+    </div>
+    {% endif %}
 </div>
 
 <div class="card mb-4">
+    {% if developers %}
     <div class="card-header dash-stat text-white">
         <i class="fas fa-table me-1"></i>
         Developer's Stats
     </div>
     <div class="card-body">
+
         <table id="datatablesDev">
             <thead>
                 <tr>
@@ -85,7 +92,6 @@
                 </tr>
             </thead>
             <tbody>
-                {% if developers %}
                 {% for developer in developers %}
                 <tr>
                     <td>{{developer.id}}</td>
@@ -98,40 +104,45 @@
                 {% else %}
                 <tr>
                     <td>4578</td>
-                    <td>example@gmail.com</td>
                     <td>Sonya Frost</td>
+                    <td>example@gmail.com</td>
                     <td>Software Engineer</td>
                     <td>Edinburgh</td>
                     <td>2008/12/13</td>
                 </tr>
                 <tr>
                     <td>4578</td>
-                    <td>example@gmail.com</td>
                     <td>Jena Gaines</td>
+                    <td>example@gmail.com</td>
                     <td>Office Manager</td>
                     <td>London</td>
                     <td>2008/12/19</td>
                 </tr>
                 <tr>
                     <td>4578</td>
-                    <td>example@gmail.com</td>
                     <td>Quinn Flynn</td>
+                    <td>example@gmail.com</td>
                     <td>Support Lead</td>
                     <td>Edinburgh</td>
                     <td>2013/03/03</td>
                 </tr>
                 <tr>
                     <td>4578</td>
-                    <td>example@gmail.com</td>
                     <td>Charde Marshall</td>
+                    <td>example@gmail.com</td>
                     <td>Regional Director</td>
                     <td>San Francisco</td>
                     <td>2008/10/16</td>
                 </tr>
                 {% endfor %}
-                {% endif %}
 
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="card-header dash-stat text-white">
+        <i class="fas fa-table me-1"></i>
+        No developers
+    </div>
+    {% endif %}
 </div>
