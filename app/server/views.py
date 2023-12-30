@@ -10,6 +10,8 @@ def home():
 
 
 @view.route('/issues', methods=["GET", "POST"])
+@login_required
+@login_required
 def issues():
     from .models import Report
     descriptions = Report.query.all()
@@ -17,6 +19,8 @@ def issues():
 
 
 @view.route('/team')
+@login_required
+@login_required
 def team():
     from app import db
     from .models import Developer, User
@@ -29,6 +33,7 @@ def team():
 
 
 @view.route('/report', methods=["GET", "POST"])
+@login_required
 @login_required
 def report():
     if request.method == "POST":
@@ -60,6 +65,7 @@ def subscribe():
 
 
 @view.route('/document', methods=["GET", "POST"])
+@login_required
 def document():
     if request.method == "POST":
         print("document")
@@ -69,11 +75,12 @@ def document():
 
 
 @view.route('/tasks', methods=["GET", "POST"])
+@login_required
 def tasks():
     from .models import Report, Developer
 
-    descriptions = Report.query.filter_by(assignedTo=current_user.id).all()
-    print(descriptions)
+    reports = Report.query.filter_by(assignedTo=current_user.id).all()
+    print(reports, len(reports), current_user.id, current_user.email)
     if request.method == "POST":
         status = request.form.get('status')
 
@@ -82,4 +89,4 @@ def tasks():
         else:
             flash("Status updated successfully", category="success")
 
-    return render_template('task.html', issdescriptions=descriptions, count=len(descriptions))
+    return render_template('task.html', descriptions=reports, count=len(reports))

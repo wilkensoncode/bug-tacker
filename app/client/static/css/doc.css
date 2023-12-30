@@ -23,10 +23,14 @@
 }
 
 .doc-button {
+    color: var(--dark);
+    
     margin-right: 5px;
-    border: 1px solid var(--green);
+    /* border: 1px solid var(--green); */
     /* background-color: var(--blue);  */
     padding: 1px;
+    color: var(--dark);
+    background-color: var(--white);
 }
 .doc-button:hover {
     background-color: var(--hover);
@@ -37,4 +41,13 @@
 .doc-button:focus {
     background-color: var(--hover);
 }
- 
+ .btn-doc-wrap{
+   
+    background:var(--white);
+ }
+
+ #text-area{
+        background:var(--white);
+        color: black;
+        width: 40rem;
+ }

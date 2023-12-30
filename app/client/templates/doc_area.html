@@ -8,17 +8,32 @@
                 drcript of issue
             </div>
 
-            <div>
-                <button class="doc-button" onclick="formatText('bold')">Bold</button>
-                <button class="doc-button" onclick="formatText('italic')">Italic</button>
-                <button class="doc-button" onclick="formatText('underline')">Underline</button>
-                <button class="doc-button" onclick="formatText('strikethrough')">Strikethrough</button>
-                <button class="doc-button" onclick="formatText('insertunorderedlist')">Bullet Points</button>
-                <button class="doc-button" onclick="formatText('insertorderedlist')">Numbered List</button>
-                <button class="doc-button" onclick="insertLink()">Insert Link</button>
+            <div class="btn-doc-wrap">
+                <button class="doc-button btn" onclick="formatText('bold')"><i
+                        class="fa-sharp fa-solid fa-bold"></i></i>
+                </button>
+                <button class="doc-button btn" onclick="formatText('italic')">
+                    <i class="fa-solid fa-italic"></i>
+                </button>
+                <button class="doc-button btn" onclick="formatText('underline')">
+                    <i class="fa-solid fa-underline"></i>
+                </button>
+                <button class="doc-button btn" onclick="formatText('strikethrough')">
+                    <i class="fa-solid fa-strikethrough"></i>
+                </button>
+                <button class="doc-button btn" onclick="formatText('insertunorderedlist')">
+                    <i class="fa-solid fa-list"></i>
+                </button>
+                <button class="doc-button btn" onclick="formatText('insertorderedlist')">
+                    <i class="fa-solid fa-list-ol"></i>
+                </button>
+                <button class="doc-button btn" onclick="insertLink()">
+                    <i class="fa-solid fa-link"> </i>
+                </button>
             </div>
             <form action="{{url_for('view.document')}}" method="POST">
                 <div contenteditable="true" id="text-area"></div>
+
                 <div class="mt-2 d-flex justify-content-end">
                     <button class="btn btn-success btn-sm ">Save</button>
                 </div>
