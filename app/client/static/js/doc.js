@@ -12,7 +12,6 @@ function insertLink() {
 
 function handleInput() {
     var textArea = document.getElementById('text-area');
-    var placeholder = textArea.getAttribute('data-placeholder');
 
     if (textArea.textContent.trim() === '') {
       textArea.innerHTML = '<span style="color: #888;">' + placeholder + '</span>';

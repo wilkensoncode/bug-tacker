@@ -19,7 +19,13 @@ def validate_credential(email=None, password=None):
 
 @admin_view.route('/admin')
 def admin():
-    return redirect('/admin/dashboard')
+    if not current_user.is_authenticated:
+        return redirect(url_for('admin_auth.adm_login'))
+    if current_user.admin == True:
+        return redirect('/admin/dashboard')
+    else:
+        flash("You are not authorize", category="error")
+        return redirect(url_for('admin_auth.adm_login'))
 
 
 @admin_view.route('/admin/dashboard')
@@ -29,13 +35,12 @@ def dashboard():
     developers = Developer.query.all()
     count_reports = len(reports)
     count_developers = len(developers)
-    print(count_reports, count_developers)
-    return render_template('adm_dash.html', reports=reports, developers=developers, count_reports=count_reports, count_dev=count_developers)
 
-
-@admin_view.route('/admin/charts')
-def charts():
-    return render_template('adm_charts.html')
+    if current_user.is_authenticated and current_user.admin == True:
+        return render_template('adm_dash.html', reports=reports, developers=developers, count_reports=count_reports, count_dev=count_developers)
+    else:
+        flash("Most login to access this page", category="error")
+        return redirect(url_for('admin_auth.adm_login'))
 
 
 @admin_view.route('/admin/dev', methods=["GET", "POST"])
@@ -86,8 +91,11 @@ def add_dev():
                 flash("Developer added successfully", category="success")
             else:
                 flash("Developer already exist", category="error")
-
-    return render_template('adm_add_dev.html', default_date=new_date.strftime("%Y-%m-%d"), users=users)
+    if current_user.is_authenticated and current_user.admin == True:
+        return render_template('adm_add_dev.html', default_date=new_date.strftime("%Y-%m-%d"), users=users)
+    else:
+        flash("Most login to access this page", category="error")
+        return redirect(url_for('admin_auth.adm_login'))
 
 
 @admin_view.route('/admin/user-manage', methods=["GET", "POST"])
@@ -198,8 +206,11 @@ def update_info():
                         flash("Invalid credentials", category="error")
                 else:
                     flash("User does not exist", category="error")
-
-    return render_template('user_manage.html')
+    if current_user.is_authenticated and current_user.admin == True:
+        return render_template('user_manage.html')
+    else:
+        flash("Most login to access this page", category="error")
+        return redirect(url_for('admin_auth.adm_login'))
 
 
 @admin_view.route('/admin/task', methods=["GET", "POST"])
@@ -226,20 +237,35 @@ def task():
 
             dev = Developer.query.filter_by(id=dev_id).first()
             report = Report.query.filter_by(id=bug_id).first()
-            # user = User.query.filter_by(email=dev_id.email).first()
-            print(dev.email)
+            if dev:
+                user = User.query.filter_by(email=dev.email).first()
+
             if dev and report:
-                report.assignedTo = None
+                duplicate = AssignTask.query.filter_by(issueId=bug_id).first()
+                if duplicate:
+                    flash("Task already assigned", category="error")
+                    return redirect(url_for('admin_view.task'))
+                assign = AssignTask(
+                    issueId=bug_id,
+                    DeveloperId=dev_id,
+                    userId=user.id,
+                    priority=priority)
+
+                report.assignedTo = user.id
 
                 update_info = Update(
                     affected_user_email=dev.email,
                     admin_email=current_user.email,
                     operation=f"Assign Task issue{bug_id}")
 
+                db.session.add(assign)
                 db.session.add(update_info)
                 db.session.commit()
                 flash("Task assigned successfully", category="success")
             else:
                 flash("Invalid IDs", category="error")
-
-    return render_template('adm_assign.html', reports=reports, developers=developers)
+    if current_user.is_authenticated and current_user.admin == True:
+        return render_template('adm_assign.html', reports=reports, developers=developers)
+    else:
+        flash("Most login to access this page", category="error")
+        return redirect(url_for('admin_auth.adm_login'))

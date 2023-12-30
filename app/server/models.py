@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
     email = db.Column(db.String(250), unique=True, index=True)
-    developer = db.relationship('Developer', backref='user', lazy=True)
+    Report = db.relationship('Report', backref='user', lazy=True)
     AssignTask = db.relationship('AssignTask', backref='user', lazy=True)
 
 
@@ -22,7 +22,7 @@ class Report(db.Model):
     issue_name = db.Column(db.String(100))
     url = db.Column(db.String(250))
     description = db.Column(db.String(500))
-    # assignedTo = db.Column(db.Integer, db.ForeignKey('developer.id')))
+    assignedTo = db.Column(db.Integer, db.ForeignKey('user.id'))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 
@@ -44,13 +44,13 @@ class Developer(db.Model):
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
     email = db.Column(db.String(250), db.ForeignKey('user.email'))
-    AssignTask = db.relationship('AssignTask', backref='developer', lazy=True)
 
 
 class AssignTask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     issueId = db.Column(db.Integer, unique=True)
     DeveloperId = db.Column(db.Integer, db.ForeignKey('developer.id'))
+    priority = db.Column(db.String(100))
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
