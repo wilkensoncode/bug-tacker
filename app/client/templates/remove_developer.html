@@ -1,0 +1,22 @@
+<ul>
+    <div class="row  mb-4">
+        <form class="row d-flex align-items-center" action="{{url_for('admin_view.update_info')}}" method="POSt">
+            <div class="col update-input-bg">
+                <input name="email" class="form-control" id="email" type="email" placeholder="team email" required />
+            </div>
+            <div class="col update-input-bg">
+                <label for="admin_checkbox">Cannot be undone:</label>
+                <input name="remove_dev" id="admin_checkbox" type="checkbox" required />
+            </div>
+            <div class="col update-input-bg">
+                <input name="admin_password" class="form-control" id="password" type="password"
+                    placeholder="admin password" required />
+            </div>
+
+            <div class="col">
+                <button class="btn btn-sm btn-dark text-white" type="submit">Remove
+                    Dev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            </div>
+        </form>
+    </div>
+</ul>

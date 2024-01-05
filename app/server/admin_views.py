@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from flask_login import current_user, login_required
 from datetime import datetime, timedelta
+from sqlalchemy.orm import aliased
 admin_view = Blueprint('admin_view', __name__)
 
 
@@ -30,14 +31,22 @@ def admin():
 
 @admin_view.route('/admin/dashboard')
 def dashboard():
-    from .models import Report, Developer
+    from app import db
+    from .models import Report, Developer, User, AssignTask, IssueStatus
     reports = Report.query.all()
-    developers = Developer.query.all()
+    developers = (
+        db.session
+        .query(Developer, User.first_name, User.last_name)
+        .join(User, User.email == Developer.email).all()
+    )
+
     count_reports = len(reports)
     count_developers = len(developers)
+    assigned = len(AssignTask.query.all())
+    fixed = len(IssueStatus.query.filter_by(status="complete").all())
 
     if current_user.is_authenticated and current_user.admin == True:
-        return render_template('adm_dash.html', reports=reports, developers=developers, count_reports=count_reports, count_dev=count_developers)
+        return render_template('adm_dash.html', fixed=fixed, assigned=assigned, reports=reports, developers=developers, count_reports=count_reports, count_dev=count_developers)
     else:
         flash("Most login to access this page", category="error")
         return redirect(url_for('admin_auth.adm_login'))
@@ -45,25 +54,28 @@ def dashboard():
 
 @admin_view.route('/admin/dev', methods=["GET", "POST"])
 def add_dev():
-    from .models import User
+    from .models import User, Developer
+    from app import db
     current_date = datetime.now()
     new_date = current_date + timedelta(weeks=1)
-    users = User.query.all()
+
+    developer_alias = aliased(Developer)
+    users = (
+        db.session.query(User)
+        .outerjoin(developer_alias, User.email == developer_alias.email)
+        .filter(developer_alias.email.is_(None))
+        .all()
+    )
+
     if request.method == "POST":
-        first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
         email = request.form.get("email")
-        print(email)
+
         salary = request.form.get("salary")
         office = request.form.get("office")
         position = request.form.get("position")
         start_date = request.form.get("start_date")
 
-        if first_name == "":
-            flash("Firstname cannot be empty", category="error")
-        elif last_name == "":
-            flash("Lastname cannot be empty", category="error")
-        elif not validate_credential(email, None):
+        if not validate_credential(email, None):
             flash("Invalid Email", category="error")
         elif salary == '' or not salary.isdigit():
             flash("Invalid Salary", category="error")
@@ -75,9 +87,8 @@ def add_dev():
             flash("Invalid start date", category="Error")
         else:
             from .models import Developer, User
-            from app import db
             developer = Developer.query.filter_by(email=email).first()
-            print(User)
+
             if not developer:
                 new_dev = Developer(
                     email=email,
@@ -114,7 +125,7 @@ def update_info():
         remove_user = request.form.get("remove_user")
 
         if current_user.admin == True:
-            print("admin", current_user.admin)
+
             user = User.query.filter_by(email=current_email).first()
             if current_email and new_password and admin_password:
                 if user:
@@ -219,7 +230,12 @@ def task():
     from app import db
 
     reports = Report.query.all()
-    developers = Developer.query.all()
+
+    developers = (
+        db.session
+        .query(Developer, User.first_name, User.last_name)
+        .join(User, User.email == Developer.email).all()
+    )
 
     if request.method == "POST":
 
@@ -235,7 +251,8 @@ def task():
             flash("Priority cannot be empty", category="error")
         else:
 
-            dev = Developer.query.filter_by(id=dev_id).first()
+            dev = (Developer.query.filter_by(id=dev_id).first())
+
             report = Report.query.filter_by(id=bug_id).first()
             if dev:
                 user = User.query.filter_by(email=dev.email).first()

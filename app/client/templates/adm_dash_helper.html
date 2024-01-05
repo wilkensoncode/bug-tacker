@@ -92,10 +92,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for developer in developers %}
+                {% for developer, first_name, last_name in developers %}
                 <tr>
                     <td>{{developer.id}}</td>
-                    <td>{{developer.first_name}} {{developer.last_name}}</td>
+                    <td>{{first_name}} {{last_name}}</td>
                     <td>{{developer.email}}</td>
                     <td>{{developer.position}}</td>
                     <td>{{developer.office}}</td>

@@ -8,15 +8,10 @@ function insertLink() {
     if (url) {
         document.execCommand("createLink", false, url);
     }
+}  
+ 
+function updateHiddenInput() { 
+  let textAreaContent = document.getElementById('text-area').innerText; 
+  document.getElementById('document_content_input').value = textAreaContent;
 }
-
-function handleInput() {
-    var textArea = document.getElementById('text-area');
-
-    if (textArea.textContent.trim() === '') {
-      textArea.innerHTML = '<span style="color: #888;">' + placeholder + '</span>';
-    } else {
-      textArea.innerHTML = textArea.textContent;
-    }
-  }
  
