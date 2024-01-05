@@ -29,10 +29,18 @@
 
 		<div class="mb-2 shadow">
 			<div>
-				{% for description in descriptions %}
+				{% for description, priority in descriptions %}
 				<ul class="d-flex flex-row justify-content-between list-unstyled row ml-2">
 					<li class="col p-2">&nbsp;&nbsp;&nbsp;{{description.issue_name}} </li>
-					<li class="col pt-2">None</li>
+					<li class="col pt-2">
+						{% if priority.lower() == "high" %}
+						<span class="text-danger">{{priority}}</span>
+						{% elif priority.lower() == "low" %}
+						<span class="text-warning">{{priority}}</span>
+						{% else %}
+						<span>{{priority}}</span>
+						{% endif %}
+					</li>
 					<li class="col pt-2">{{description.date_created}}</li>
 					<li class="col">
 						<p data-bs-toggle="modal" data-bs-target="#description" class="btn-issue-desc mt-2">

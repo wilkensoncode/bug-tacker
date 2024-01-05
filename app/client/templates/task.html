@@ -6,11 +6,20 @@
 
 <div class="pb-5">
     <div class="container">
+        {% if not descriptions %}
+        <div class="sign pt-2 pb-5 position-relative" align="center">
+            <h3>
+                No Tasks
+            </h3>
+        </div>
+        {% endif %}
         {% if current_user.is_authenticated and descriptions %}
 
         <div class="sign pt-2 pb-5 position-relative" align="center">
             <h3>
-                {% if count > 1 %}
+                {% if count == 0 %}
+                No Tasks
+                {% elif count > 1 %}
                 My tasks
                 <span class="badge text-bg-dark">{{count}}</span></a>
                 {% else %}
@@ -31,13 +40,13 @@
             </div>
         </div>
 
+
         <div class="mb-2 shadow">
             <div>
-                {% for description in descriptions %}
+                {% for description, priority in descriptions %}
                 {% include 'issue_helper.html' %}
                 {% endfor %}
             </div>
-
         </div>
 
         {% endif %}

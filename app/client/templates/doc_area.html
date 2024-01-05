@@ -2,12 +2,16 @@
 {% block title %}document{% endblock%}
 {% block section %}
 <div class="container">
+    <div class="d-flex justify-content-center pb-5">
+        <div class="desc-text">
+            <h4>
+                Document Your Work ↓
+            </h4>
+        </div>
+    </div>
+
     <div class="d-flex justify-content-center">
         <div class="desc-text">
-            <div class="description">
-                drcript of issue
-            </div>
-
             <div class="btn-doc-wrap">
                 <button class="doc-button btn" onclick="formatText('bold')"><i
                         class="fa-sharp fa-solid fa-bold"></i></i>
@@ -31,11 +35,17 @@
                     <i class="fa-solid fa-link"> </i>
                 </button>
             </div>
-            <form action="{{url_for('view.document')}}" method="POST">
-                <div contenteditable="true" id="text-area"></div>
+            <form action="{{url_for('view.document', id=id)}}" method="POST">
+                <div contenteditable="true" id="text-area" oninput="updateHiddenInput()">
+                    <div class="fs-5">Issue Link/Url ↓</div>
+                    <a href="{{report.url}}">{{report.url}}</a>
+                    <div class="fs-5"> Issue Description ↓</div>
+                    <br>
+                </div>
+                <input type="hidden" name="document-content" id="document_content_input">
 
                 <div class="mt-2 d-flex justify-content-end">
-                    <button class="btn btn-success btn-sm ">Save</button>
+                    <button class="btn btn-success btn-sm" type="submit">Save</button>
                 </div>
             </form>
         </div>

@@ -13,8 +13,15 @@ def home():
 @login_required
 @login_required
 def issues():
-    from .models import Report
-    descriptions = Report.query.all()
+    from .models import Report, AssignTask
+    from app import db
+    descriptions = (
+        db.session
+        .query(Report, AssignTask.priority)
+        .filter_by(assignedTo=current_user.id)
+        .join(AssignTask, AssignTask.issueId == Report.id)
+        .all()
+    )
     return render_template('issues.html', descriptions=descriptions, count=len(descriptions))
 
 
@@ -64,29 +71,58 @@ def subscribe():
     return redirect(url_for('view.home'))
 
 
-@view.route('/document', methods=["GET", "POST"])
+document = ""
+task_id = -1
+
+
+@view.route('/document/<int:id>', methods=["GET", "POST"])
 @login_required
-def document():
+def document(id):
+    from .models import Report
+    report = Report.query.get(id)
+    global task_id
+    task_id = id
     if request.method == "POST":
-        print("document")
+        global document
+        document = request.form.get("document-content")
         return redirect(url_for('view.tasks'))
 
-    return render_template('doc_area.html')
+    return render_template('doc_area.html', report=report, id=id)
 
 
 @view.route('/tasks', methods=["GET", "POST"])
 @login_required
 def tasks():
-    from .models import Report, Developer
+    global document
+    global task_id
+    from .models import Report, IssueStatus, AssignTask, Update
+    from app import db
 
-    reports = Report.query.filter_by(assignedTo=current_user.id).all()
-    print(reports, len(reports), current_user.id, current_user.email)
+    reports = (
+        db.session
+        .query(Report, AssignTask.priority)
+        .filter_by(assignedTo=current_user.id)
+        .join(AssignTask, AssignTask.issueId == Report.id)
+        .all()
+    )
+
     if request.method == "POST":
         status = request.form.get('status')
-
         if not status:
             flash("Status cannot be empty choose an option", category='error')
         else:
+            if not document or task_id == -1:
+                flash("Document cannot be empty", category='error')
+                return redirect(url_for('view.tasks'))
+
+            else:
+                issueStatus = IssueStatus(
+                    status=status, documentation=document, issueId=task_id)
+
+                db.session.add(issueStatus)
+                db.session.commit()
+
+                document = ""
             flash("Status updated successfully", category="success")
 
     return render_template('task.html', descriptions=reports, count=len(reports))

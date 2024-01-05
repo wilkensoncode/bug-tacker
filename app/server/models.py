@@ -23,6 +23,7 @@ class Report(db.Model):
     url = db.Column(db.String(250))
     description = db.Column(db.String(500))
     assignedTo = db.Column(db.Integer, db.ForeignKey('user.id'))
+    IssueStatus = db.relationship('IssueStatus', backref='report', lazy=True)
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 
@@ -31,6 +32,7 @@ class IssueStatus(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(15))
     documentation = db.Column(db.String(500))
+    issueId = db.Column(db.Integer, db.ForeignKey('report.id'))
     date_created = db.Column(db.DateTime(timezone=True),
                              default=func.now())
 
